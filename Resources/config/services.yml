@@ -1,0 +1,6 @@
+services:
+    loft_digital_rest.view_response_listener:
+        class: LoftDigital\RestBundle\EventListener\ViewResponseListener
+        arguments: ["@service_container"]
+        tags:
+            - { name: kernel.event_listener, event: kernel.view, method: onKernelView, priority: 110 }
