@@ -22,6 +22,23 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
+        $rootNode = $treeBuilder->root('loft_digital_rest');
+        $rootNode
+            ->children()
+                ->arrayNode('range_listener')
+                    ->children()
+                        ->integerNode('max_limit')->min(0)->defaultValue(1000)->end()
+                        ->integerNode('max')->min(0)->defaultValue(200)->end()
+                        ->integerNode('offset')->min(0)->defaultValue(0)->end()
+                        ->scalarNode('order')
+                            ->defaultValue('asc')
+                            ->validate()
+                            ->ifNotInArray(array('asc', 'desc'))
+                            ->thenInvalid('Invalid order "%s"')
+                        ->end()
+                    ->end()
+                ->end()
+            ->end();
 
         return $treeBuilder;
     }

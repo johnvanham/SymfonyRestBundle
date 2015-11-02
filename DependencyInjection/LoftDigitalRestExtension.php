@@ -25,6 +25,20 @@ class LoftDigitalRestExtension extends Extension
     {
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yml');
+
+        $configuration = new Configuration();
+        $processedConfig = $this->processConfiguration($configuration, $configs);
+
+        $container->setParameter('loft_digital_rest.range_listener.max', $processedConfig['range_listener']['max']);
+        $container->setParameter('loft_digital_rest.range_listener.order', $processedConfig['range_listener']['order']);
+        $container->setParameter(
+            'loft_digital_rest.range_listener.max_limit',
+            $processedConfig['range_listener']['max_limit']
+        );
+        $container->setParameter(
+            'loft_digital_rest.range_listener.offset',
+            $processedConfig['range_listener']['offset']
+        );
     }
 
     /**
