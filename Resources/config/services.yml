@@ -1,10 +1,4 @@
 services:
-    loft_digital_rest.view_response_listener:
-        class: LoftDigital\RestBundle\EventListener\ViewResponseListener
-        arguments: ["@service_container"]
-        tags:
-            - { name: kernel.event_listener, event: kernel.view, method: onKernelView, priority: 110 }
-
     loft_digital_rest.range_listener:
         class: LoftDigital\RestBundle\EventListener\RangeListener
         arguments: ["@fos_rest.view_handler.default"]
