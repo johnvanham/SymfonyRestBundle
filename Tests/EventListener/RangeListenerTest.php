@@ -42,6 +42,7 @@ class RangeListenerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($order, $request->get('order'));
         $this->assertEquals($max, $request->get('max'));
         $this->assertEquals($offset, $request->get('offset'));
+        $this->assertEquals(null, $request->get('range'));
     }
 
     /**
@@ -52,9 +53,10 @@ class RangeListenerTest extends \PHPUnit_Framework_TestCase
         $order = 'desc';
         $max = 20;
         $offset = 2;
+        $range = 'name';
 
         $request = new Request();
-        $request->headers->set('range', "name ..; order=$order,max=$max,offset=$offset;");
+        $request->headers->set('range', "$range ; order=$order,max=$max,offset=$offset;");
 
         /** @var GetResponseEvent|\PHPUnit_Framework_MockObject_MockObject $event */
         $event = $this->getMockBuilder('\Symfony\Component\HttpKernel\Event\GetResponseEvent')
@@ -71,6 +73,7 @@ class RangeListenerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($order, $request->get('order'));
         $this->assertEquals($max, $request->get('max'));
         $this->assertEquals($offset, $request->get('offset'));
+        $this->assertEquals($range, $request->get('range'));
     }
 
     /**

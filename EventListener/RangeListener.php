@@ -10,7 +10,7 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
  * Range listener process Range HTTP header and extracts order, limit and max returned values from it.
  * Example Range HTTP header:
  * ```
- * Range: name ..; order=desc,max=100,offset=1;
+ * Range: name; order=desc,max=100,offset=1;
  * ```
  * When the range header is not set, then range attributes are populated with default values set
  * in configuration file.
@@ -121,6 +121,10 @@ class RangeListener
 
             if (1 === preg_match('/(offset)=(?P<offset>(\d)+)/', $range, $matches)) {
                 $request->attributes->set('offset', $matches['offset']);
+            }
+
+            if (1 === preg_match('/^(?P<range>(\w+))/', $range, $matches)) {
+                $request->attributes->set('range', $matches['range']);
             }
         }
     }

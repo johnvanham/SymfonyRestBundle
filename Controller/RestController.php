@@ -14,6 +14,23 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class RestController extends FOSRestController
 {
+    /** @var Request */
+    protected $request;
+
+    /**
+     * @return Request
+     */
+    public function getRequest()
+    {
+        if ($this->request) {
+            return $this->request;
+        }
+
+        $this->request = $this->container->get('request_stack')->getCurrentRequest();
+
+        return $this->request;
+    }
+
     /**
      * Get maximum range for a list request
      *
@@ -31,7 +48,7 @@ class RestController extends FOSRestController
      */
     public function getOffset()
     {
-        return $this->container->get('request_stack')->getCurrentRequest()->get('offset');
+        return (int) $this->getRequest()->get('offset');
     }
 
     /**
@@ -41,6 +58,16 @@ class RestController extends FOSRestController
      */
     public function getOrder()
     {
-        return $this->container->get('request_stack')->getCurrentRequest()->get('order');
+        return $this->getRequest()->get('order');
+    }
+
+    /**
+     * Get range for a list request
+     *
+     * @return mixed|null
+     */
+    public function getRange()
+    {
+        return $this->getRequest()->get('range');
     }
 }
