@@ -68,38 +68,39 @@ class ListResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \LoftDigital\RestBundle\Model\ListRequest::__construct
-     * @covers \LoftDigital\RestBundle\Model\ListRequest::getTotalItemCount
-     * @covers \LoftDigital\RestBundle\Model\ListRequest::getIterator
-     * @covers \LoftDigital\RestBundle\Model\ListRequest::getPageItemCount
-     * @covers \LoftDigital\RestBundle\Model\ListRequest::getOffset
-     * @covers \LoftDigital\RestBundle\Model\ListRequest::getAcceptRanges
-     * @covers \LoftDigital\RestBundle\Model\ListRequest::getRange
+     * @covers \LoftDigital\RestBundle\Model\ListResponse::__construct
+     * @covers \LoftDigital\RestBundle\Model\ListResponse::__construct
+     * @covers \LoftDigital\RestBundle\Model\ListResponse::getTotalItemCount
+     * @covers \LoftDigital\RestBundle\Model\ListResponse::getIterator
+     * @covers \LoftDigital\RestBundle\Model\ListResponse::getPageItemCount
+     * @covers \LoftDigital\RestBundle\Model\ListResponse::getOffset
+     * @covers \LoftDigital\RestBundle\Model\ListResponse::getAcceptRanges
+     * @covers \LoftDigital\RestBundle\Model\ListResponse::getRange
      */
     public function testConstructor()
     {
-        $listRequest = new ListResponse($this->paginator, $this->offset, $this->range, $this->acceptRanges);
+        $listResponse = new ListResponse($this->paginator, $this->offset, $this->range, $this->acceptRanges);
 
-        $this->assertEquals($this->totalCount, $listRequest->getTotalItemCount());
-        $this->assertEquals($this->iterator, $listRequest->getIterator());
-        $this->assertEquals($this->pageItemCount, $listRequest->getPageItemCount());
-        $this->assertEquals($this->offset, $listRequest->getOffset());
-        $this->assertEquals($this->acceptRanges, $listRequest->getAcceptRanges());
-        $this->assertEquals($this->range, $listRequest->getRange());
+        $this->assertEquals($this->totalCount, $listResponse->getTotalItemCount());
+        $this->assertEquals($this->iterator, $listResponse->getIterator());
+        $this->assertEquals($this->pageItemCount, $listResponse->getPageItemCount());
+        $this->assertEquals($this->offset, $listResponse->getOffset());
+        $this->assertEquals($this->acceptRanges, $listResponse->getAcceptRanges());
+        $this->assertEquals($this->range, $listResponse->getRange());
     }
 
     /**
-     * @covers \LoftDigital\RestBundle\Model\ListRequest::getData
+     * @covers \LoftDigital\RestBundle\Model\ListResponse::getData
      */
     public function testGetData()
     {
-        $listRequest = new ListResponse($this->paginator, $this->offset, $this->range, $this->acceptRanges);
+        $listResponse = new ListResponse($this->paginator, $this->offset, $this->range, $this->acceptRanges);
 
-        $this->assertEquals($this->data, $listRequest->getData());
+        $this->assertEquals($this->data, $listResponse->getData());
     }
 
     /**
-     * @covers \LoftDigital\RestBundle\Model\ListRequest::getNextRangeHeader
+     * @covers \LoftDigital\RestBundle\Model\ListResponse::getNextRangeHeader
      */
     public function testGetNextRangeHeader()
     {
@@ -112,12 +113,12 @@ class ListResponseTest extends \PHPUnit_Framework_TestCase
             )
         );
 
-        $listRequest = new ListResponse($this->paginator, $this->offset, $this->range, $this->acceptRanges);
-        $this->assertEquals($nextRangeHeader, $listRequest->getNextRangeHeader());
+        $listResponse = new ListResponse($this->paginator, $this->offset, $this->range, $this->acceptRanges);
+        $this->assertEquals($nextRangeHeader, $listResponse->getNextRangeHeader());
     }
 
     /**
-     * @covers \LoftDigital\RestBundle\Model\ListRequest::getContentRangeHeader
+     * @covers \LoftDigital\RestBundle\Model\ListResponse::getContentRangeHeader
      */
     public function testGetContentRangeHeader()
     {
@@ -130,8 +131,8 @@ class ListResponseTest extends \PHPUnit_Framework_TestCase
                 $this->totalCount
             )
         );
-        $listRequest = new ListResponse($this->paginator, $this->offset, $this->range, $this->acceptRanges);
-        $this->assertEquals($contentRangeHeader, $listRequest->getContentRangeHeader());
+        $listResponse = new ListResponse($this->paginator, $this->offset, $this->range, $this->acceptRanges);
+        $this->assertEquals($contentRangeHeader, $listResponse->getContentRangeHeader());
 
         $offset = $this->totalCount - 10;
         $contentRangeHeader = array(
@@ -143,12 +144,12 @@ class ListResponseTest extends \PHPUnit_Framework_TestCase
                 $this->totalCount
             )
         );
-        $listRequest = new ListResponse($this->paginator, $offset, $this->range, $this->acceptRanges);
-        $this->assertEquals($contentRangeHeader, $listRequest->getContentRangeHeader());
+        $listResponse = new ListResponse($this->paginator, $offset, $this->range, $this->acceptRanges);
+        $this->assertEquals($contentRangeHeader, $listResponse->getContentRangeHeader());
     }
 
     /**
-     * @covers \LoftDigital\RestBundle\Model\ListRequest::getAcceptRangesHeader
+     * @covers \LoftDigital\RestBundle\Model\ListResponse::getAcceptRangesHeader
      */
     public function testGetAcceptRangesHeader()
     {
@@ -156,12 +157,12 @@ class ListResponseTest extends \PHPUnit_Framework_TestCase
             'Accept-Ranges' => implode(', ', $this->acceptRanges)
         );
 
-        $listRequest = new ListResponse($this->paginator, $this->offset, $this->range, $this->acceptRanges);
-        $this->assertEquals($acceptRangesHeader, $listRequest->getAcceptRangesHeader());
+        $listResponse = new ListResponse($this->paginator, $this->offset, $this->range, $this->acceptRanges);
+        $this->assertEquals($acceptRangesHeader, $listResponse->getAcceptRangesHeader());
     }
 
     /**
-     * @covers \LoftDigital\RestBundle\Model\ListRequest::getHeaders
+     * @covers \LoftDigital\RestBundle\Model\ListResponse::getHeaders
      */
     public function testGetHeaders()
     {
@@ -182,17 +183,17 @@ class ListResponseTest extends \PHPUnit_Framework_TestCase
             ),
         );
 
-        $listRequest = new ListResponse($this->paginator, $this->offset, $this->range, $this->acceptRanges);
-        $this->assertEquals($headers, $listRequest->getHeaders());
+        $listResponse = new ListResponse($this->paginator, $this->offset, $this->range, $this->acceptRanges);
+        $this->assertEquals($headers, $listResponse->getHeaders());
     }
 
     /**
-     * @covers \LoftDigital\RestBundle\Model\ListRequest::getStatusCode
+     * @covers \LoftDigital\RestBundle\Model\ListResponse::getStatusCode
      */
     public function testGetStatusCode()
     {
-        $listRequest = new ListResponse($this->paginator, $this->offset, $this->range, $this->acceptRanges);
-        $this->assertEquals(206, $listRequest->getStatusCode());
+        $listResponse = new ListResponse($this->paginator, $this->offset, $this->range, $this->acceptRanges);
+        $this->assertEquals(206, $listResponse->getStatusCode());
 
         $totalCount = 11;
         $data = range(1, 20);
@@ -212,8 +213,8 @@ class ListResponseTest extends \PHPUnit_Framework_TestCase
             ->method('count')
             ->will($this->returnValue($totalCount));
 
-        $listRequest = new ListResponse($paginator, $this->offset, $this->range, $this->acceptRanges);
+        $listResponse = new ListResponse($paginator, $this->offset, $this->range, $this->acceptRanges);
 
-        $this->assertEquals(200, $listRequest->getStatusCode());
+        $this->assertEquals(200, $listResponse->getStatusCode());
     }
 }
