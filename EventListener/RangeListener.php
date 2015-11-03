@@ -123,7 +123,7 @@ class RangeListener
                 $request->attributes->set('offset', $matches['offset']);
             }
 
-            if (1 === preg_match('/^(?P<range>(\w+))/', $range, $matches)) {
+            if (1 === preg_match('/^(?P<range>(\w+))\s*\;/', $range, $matches)) {
                 $request->attributes->set('range', $matches['range']);
             }
         }
