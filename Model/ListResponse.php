@@ -2,6 +2,7 @@
 
 namespace LoftDigital\RestBundle\Model;
 
+use Countable;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
@@ -82,12 +83,12 @@ class ListResponse implements ResponseInterface
     }
 
     /**
-     * @param Paginator $paginator
+     * @param Paginator|Countable $paginator
      * @param int $offset
      * @param string $range
      * @param array $acceptRanges
      */
-    public function __construct(Paginator $paginator, $offset, $range, array $acceptRanges)
+    public function __construct(Countable $paginator, $offset, $range, array $acceptRanges)
     {
         $this->totalItemCount = count($paginator);
         $this->iterator = $paginator->getIterator();
