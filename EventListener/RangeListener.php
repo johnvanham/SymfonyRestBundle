@@ -111,7 +111,7 @@ class RangeListener
         $request->attributes->set('offset', $this->offset);
 
         if ($range = $request->headers->get('range')) {
-            if (1 === preg_match('/(order)=(?P<order>(asc|desc))/', $range, $matches)) {
+            if (1 === preg_match('/(order)=(?P<order>(\w+))/', $range, $matches)) {
                 $request->attributes->set('order', $matches['order']);
             }
 
