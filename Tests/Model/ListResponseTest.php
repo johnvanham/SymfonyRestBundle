@@ -39,7 +39,7 @@ class ListResponseTest extends \PHPUnit_Framework_TestCase
     protected $range;
 
     /**
-     * {inheritdoc}
+     * {@inheritdoc}
      */
     public function setUp()
     {

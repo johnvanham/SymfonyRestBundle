@@ -19,7 +19,7 @@ class AbstractItemHandlerTest extends \PHPUnit_Framework_TestCase
     protected $entityClass;
 
     /**
-     * {inheritdoc}
+     * {@inheritdoc}
      */
     public function setUp()
     {

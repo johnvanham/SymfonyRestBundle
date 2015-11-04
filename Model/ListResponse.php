@@ -99,7 +99,7 @@ class ListResponse implements ResponseInterface
     }
 
     /**
-     * {inheritdoc}
+     * {@inheritdoc}
      */
     public function getData()
     {
@@ -107,7 +107,7 @@ class ListResponse implements ResponseInterface
     }
 
     /**
-     * {inheritdoc}
+     * {@inheritdoc}
      */
     public function getHeaders()
     {
@@ -119,7 +119,7 @@ class ListResponse implements ResponseInterface
     }
 
     /**
-     * {inheritdoc}
+     * {@inheritdoc}
      */
     public function getStatusCode()
     {

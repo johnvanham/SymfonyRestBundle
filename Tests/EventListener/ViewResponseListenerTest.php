@@ -34,7 +34,7 @@ class ViewResponseListenerTest extends \PHPUnit_Framework_TestCase
     protected $customer;
 
     /**
-     * {inheritdoc}
+     * {@inheritdoc}
      */
     public function setUp()
     {
