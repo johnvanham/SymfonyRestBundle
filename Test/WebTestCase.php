@@ -77,11 +77,19 @@ abstract class WebTestCase extends FrameworkWebTestCase
     }
 
     /**
-     * @return mixed
+     * @return Client
      */
     public function getClient()
     {
         return $this->client;
+    }
+
+    /**
+     * @return null|\Symfony\Component\DomCrawler\Crawler
+     */
+    public function getCrawler()
+    {
+        return $this->client->getCrawler();
     }
 
     /**
