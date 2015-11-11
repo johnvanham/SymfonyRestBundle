@@ -213,14 +213,6 @@ abstract class WebTestCase extends FrameworkWebTestCase
     }
 
     /**
-     * @return null|\Symfony\Component\HttpFoundation\Request
-     */
-    public function getFinalRequest()
-    {
-        return $this->client->getRequest();
-    }
-
-    /**
      * @param string $xml
      *
      * @return bool|\SimpleXMLElement
