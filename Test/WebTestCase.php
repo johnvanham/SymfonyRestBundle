@@ -171,7 +171,7 @@ abstract class WebTestCase extends FrameworkWebTestCase
     public function setContentTypeHeader($contentType = self::CONTENT_JSON)
     {
         $contentTypeHeader = [
-            'HTTP_CONTENT_TYPE' => $contentType
+            'CONTENT_TYPE' => $contentType
         ];
 
         $this->setHeaders($contentTypeHeader);
@@ -275,12 +275,13 @@ abstract class WebTestCase extends FrameworkWebTestCase
 
     /**
      * @param string $json
+     * @param bool $assoc
      *
      * @return bool|mixed
      */
-    public function validateJsonResponse($json)
+    public function validateJsonResponse($json, $assoc = false)
     {
-        $data = json_decode($json);
+        $data = json_decode($json, $assoc);
 
         $this->assertNotFalse($data);
 
