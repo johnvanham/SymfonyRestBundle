@@ -4,6 +4,7 @@ namespace LoftDigital\RestBundle\Test;
 
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase as FrameworkWebTestCase;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -38,6 +39,9 @@ abstract class WebTestCase extends FrameworkWebTestCase
     /** @var string */
     protected $content;
 
+    /** @var ContainerInterface */
+    protected $container;
+
     const ACCEPT_JSON_V1_0 = 'application/json;version=1.0';
     const ACCEPT_XML_V1_0 = 'application/xml;version=1.0';
 
@@ -57,7 +61,9 @@ abstract class WebTestCase extends FrameworkWebTestCase
      */
     public function setUp()
     {
-        $this->token = 'd43Gekjf73k0k02djh';
+        $this->container = static::createClient()->getKernel()->getContainer();
+        $user = $this->container->getParameter('loft_digital_rest_oauth.user');
+        $this->token = $user['token'];
     }
 
     /**
@@ -80,11 +86,27 @@ abstract class WebTestCase extends FrameworkWebTestCase
     }
 
     /**
-     * @return mixed
+     * @return Client
      */
     public function getClient()
     {
         return $this->client;
+    }
+
+    /**
+     * @return null|\Symfony\Component\DomCrawler\Crawler
+     */
+    public function getCrawler()
+    {
+        return $this->client->getCrawler();
+    }
+
+    /**
+     * @return ContainerInterface
+     */
+    public function getContainer()
+    {
+        return $this->container;
     }
 
     /**
