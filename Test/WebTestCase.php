@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
 abstract class WebTestCase extends FrameworkWebTestCase
 {
     /** @var array */
-    protected $headers = array();
+    protected $headers = [];
 
     /** @var string */
     protected $token;
@@ -27,13 +27,16 @@ abstract class WebTestCase extends FrameworkWebTestCase
     protected $uri;
 
     /** @var array */
-    protected $parameters = array();
+    protected $parameters = [];
 
     /** @var array */
-    protected $files = array();
+    protected $files = [];
 
     /** @var Client */
     protected $client;
+
+    /** @var string */
+    protected $content;
 
     const ACCEPT_JSON_V1_0 = 'application/json;version=1.0';
     const ACCEPT_XML_V1_0 = 'application/xml;version=1.0';
@@ -129,9 +132,9 @@ abstract class WebTestCase extends FrameworkWebTestCase
      */
     public function setAcceptTypeHeader($acceptType = self::ACCEPT_JSON_V1_0)
     {
-        $acceptTypeHeader = array(
+        $acceptTypeHeader = [
             'HTTP_ACCEPT' => $acceptType
-        );
+        ];
 
         $this->setHeaders($acceptTypeHeader);
 
@@ -145,9 +148,9 @@ abstract class WebTestCase extends FrameworkWebTestCase
      */
     public function setContentTypeHeader($contentType = self::CONTENT_JSON)
     {
-        $contentTypeHeader = array(
+        $contentTypeHeader = [
             'HTTP_CONTENT_TYPE' => $contentType
-        );
+        ];
 
         $this->setHeaders($contentTypeHeader);
 
@@ -164,11 +167,31 @@ abstract class WebTestCase extends FrameworkWebTestCase
      */
     public function setRangeHeader($range, $max, $offset = 0, $order = self::ORDER_ASC)
     {
-        $rangeHeader = array(
+        $rangeHeader = [
             'HTTP_RANGE' => "$range;order=$order,max=$max,offset=$offset"
-        );
+        ];
 
         $this->setHeaders($rangeHeader);
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * @param string $content
+     *
+     * @return $this
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
 
         return $this;
     }
@@ -180,9 +203,9 @@ abstract class WebTestCase extends FrameworkWebTestCase
      */
     public function authorize()
     {
-        $authorizationHeader = array(
+        $authorizationHeader = [
             'HTTP_AUTHORIZATION' => 'Bearer ' . $this->token
-        );
+        ];
 
         $this->setHeaders($authorizationHeader);
 
@@ -202,7 +225,8 @@ abstract class WebTestCase extends FrameworkWebTestCase
             $this->uri,
             $this->parameters,
             $this->files,
-            $this->headers
+            $this->headers,
+            $this->content
         );
 
         return $this->client->getResponse();
