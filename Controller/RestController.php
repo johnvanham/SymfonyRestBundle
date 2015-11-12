@@ -38,7 +38,7 @@ class RestController extends FOSRestController
      */
     public function getMax()
     {
-        return $this->container->get('request_stack')->getCurrentRequest()->get('max');
+        return (int)$this->getRequest()->get('max');
     }
 
     /**

@@ -5,6 +5,7 @@ namespace LoftDigital\RestBundle\Handler;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Item handler abstract class
@@ -35,7 +36,7 @@ abstract class AbstractItemHandler
 
     /**
      * @param EntityManagerInterface $entityManager
-     * @param $entityClass
+     * @param                        $entityClass
      */
     public function __construct(EntityManagerInterface $entityManager, $entityClass)
     {

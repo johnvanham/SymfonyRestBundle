@@ -10,13 +10,6 @@ namespace LoftDigital\RestBundle\Services;
 class FormHelper
 {
     /**
-     * FormErrorHelper constructor.
-     */
-    public function __construct()
-    {
-    }
-
-    /**
      * Takes care of $form and return custom error array with errors and messages
      *
      * @param $form
@@ -46,6 +39,8 @@ class FormHelper
      * @param $form
      *
      * @return string
+     *
+     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
      */
     public function getErrorsAsString($form, $message = "Invalid parameters ")
     {
@@ -54,6 +49,7 @@ class FormHelper
         foreach ($errors as $field => $error) {
             $message .= $field . ', ';
         }
+
         $message = substr($message, 0, -2);
 
         return $message;
