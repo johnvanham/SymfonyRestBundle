@@ -5,6 +5,8 @@ namespace LoftDigital\RestBundle\Services;
 /**
  * Class FormHelper
  *
+ * @author George Mylonas <georgem@loftdigital.com>
+ * @copyright Loft Digital <www.loftdigital.com>, 2015
  * @package LoftDigital\RestBundle\Services
  */
 class FormHelper
@@ -20,7 +22,6 @@ class FormHelper
     {
         $errors = array();
         foreach ($form as $fieldName => $formField) {
-            // each field has an array of errors
             $currentError = $formField->getErrors();
 
             if ($currentError->current()) {
