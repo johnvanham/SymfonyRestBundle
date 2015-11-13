@@ -278,6 +278,8 @@ abstract class WebTestCase extends FrameworkWebTestCase
      * @param bool $assoc
      *
      * @return bool|mixed
+     *
+     * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
      */
     public function validateJsonResponse($json, $assoc = false)
     {
