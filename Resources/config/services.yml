@@ -1,20 +1,21 @@
+---
 services:
-    loft_digital_rest.range_listener:
-        class: LoftDigital\RestBundle\EventListener\RangeListener
-        arguments: ["@fos_rest.view_handler.default"]
-        tags:
-            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 32 }
-        calls:
-            - [setMax, ["%loft_digital_rest.range_listener.max%"]]
-            - [setOffset, ["%loft_digital_rest.range_listener.offset%"]]
-            - [setOrder, ["%loft_digital_rest.range_listener.order%"]]
-            - [setMaxLimit, ["%loft_digital_rest.range_listener.max_limit%"]]
+  loft_digital_rest.range_listener:
+    class: LoftDigital\RestBundle\EventListener\RangeListener
+    arguments: ["@fos_rest.view_handler.default"]
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 32 }
+    calls:
+      - [setMax, ["%loft_digital_rest.range_listener.max%"]]
+      - [setOffset, ["%loft_digital_rest.range_listener.offset%"]]
+      - [setOrder, ["%loft_digital_rest.range_listener.order%"]]
+      - [setMaxLimit, ["%loft_digital_rest.range_listener.max_limit%"]]
 
-    loft_digital_rest.view_response_listener:
-        class: LoftDigital\RestBundle\EventListener\ViewResponseListener
-        arguments: ["@service_container"]
-        tags:
-            - { name: kernel.event_listener, event: kernel.view, method: onKernelView, priority: 111 }
+  loft_digital_rest.view_response_listener:
+    class: LoftDigital\RestBundle\EventListener\ViewResponseListener
+    arguments: ["@service_container"]
+    tags:
+        - { name: kernel.event_listener, event: kernel.view, method: onKernelView, priority: 111 }
 
-    loft_digital_rest.form_helper:
-            class:  LoftDigital\RestBundle\Services\FormHelper
+  loft_digital_rest.form_helper:
+    class:  LoftDigital\RestBundle\Services\FormHelper

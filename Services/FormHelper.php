@@ -5,7 +5,7 @@ namespace LoftDigital\RestBundle\Services;
 /**
  * Class FormHelper
  *
- * @package LoftDigital\RestBundle\Serivices
+ * @package LoftDigital\RestBundle\Services
  */
 class FormHelper
 {
