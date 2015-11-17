@@ -42,9 +42,6 @@ abstract class WebTestCase extends FrameworkWebTestCase
     /** @var ContainerInterface */
     protected $container;
 
-    /** @var  string */
-    protected $content;
-
     const ACCEPT_JSON_V1_0 = 'application/json;version=1.0';
     const ACCEPT_XML_V1_0 = 'application/xml;version=1.0';
 
@@ -306,17 +303,5 @@ abstract class WebTestCase extends FrameworkWebTestCase
         foreach ($xmlData as $item => $value) {
             $this->assertEquals((string) $value, $jsonData->{$item});
         }
-    }
-
-    /**
-     * @param $content
-     *
-     * @return $this
-     */
-    public function setContent($content)
-    {
-        $this->content = $content;
-
-        return $this;
     }
 }
