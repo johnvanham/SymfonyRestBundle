@@ -3,6 +3,7 @@
 namespace LoftDigital\RestBundle\Controller;
 
 use FOS\RestBundle\Controller\FOSRestController;
+use FOS\RestBundle\View\View;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -38,7 +39,7 @@ class RestController extends FOSRestController
      */
     public function getMax()
     {
-        return (int)$this->getRequest()->get('max');
+        return $this->container->get('request_stack')->getCurrentRequest()->get('max');
     }
 
     /**
@@ -48,7 +49,7 @@ class RestController extends FOSRestController
      */
     public function getOffset()
     {
-        return (int)$this->getRequest()->get('offset');
+        return (int) $this->getRequest()->get('offset');
     }
 
     /**
@@ -81,7 +82,7 @@ class RestController extends FOSRestController
      *
      * @param string|null $message
      *
-     * @return \FOS\RestBundle\View\View
+     * @return View
      */
     public function statusBadRequest($message = null)
     {
@@ -102,7 +103,7 @@ class RestController extends FOSRestController
      *
      * @param string|null $message
      *
-     * @return \FOS\RestBundle\View\View
+     * @return View
      */
     public function statusUnprocessableEntity($message = null)
     {
@@ -122,7 +123,7 @@ class RestController extends FOSRestController
      *
      * @param null $message
      *
-     * @return \FOS\RestBundle\View\View
+     * @return View
      */
     public function statusNotFound($message = null)
     {
@@ -142,7 +143,7 @@ class RestController extends FOSRestController
      *
      * @param array|object $object
      *
-     * @return \FOS\RestBundle\View\View
+     * @return View
      */
     public function statusCreated($object)
     {
