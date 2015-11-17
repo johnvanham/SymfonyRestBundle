@@ -36,7 +36,7 @@ abstract class AbstractItemHandler
 
     /**
      * @param EntityManagerInterface $entityManager
-     * @param                        $entityClass
+     * @param string $entityClass
      */
     public function __construct(EntityManagerInterface $entityManager, $entityClass)
     {

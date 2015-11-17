@@ -40,14 +40,12 @@ class FormHelper
      * @param $form
      *
      * @return string
-     *
-     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
      */
     public function getErrorsAsString($form, $message = "Invalid parameters ")
     {
         $errors = $this->getErrors($form);
 
-        foreach ($errors as $field => $error) {
+        foreach (array_keys($errors) as $field) {
             $message .= $field . ', ';
         }
 
