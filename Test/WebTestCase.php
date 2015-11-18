@@ -293,15 +293,4 @@ abstract class WebTestCase extends FrameworkWebTestCase
 
         return $data;
     }
-
-    /**
-     * @param \SimpleXMLElement $xmlData
-     * @param string $jsonData
-     */
-    public function validateDataEquals($xmlData, $jsonData)
-    {
-        foreach ($xmlData as $item => $value) {
-            $this->assertEquals((string) $value, $jsonData->{$item});
-        }
-    }
 }
