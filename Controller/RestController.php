@@ -15,9 +15,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class RestController extends FOSRestController
 {
-    /** @var Request */
-    protected $request;
-
     const REQUEST_RANGE = 'range';
     const REQUEST_OFFSET = 'offset';
     const REQUEST_ORDER = 'order';
