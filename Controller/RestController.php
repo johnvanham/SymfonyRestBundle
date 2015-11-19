@@ -24,60 +24,6 @@ class RestController extends FOSRestController
     const REQUEST_MAX = 'max';
 
     /**
-     * @return Request
-     */
-    public function getRequest()
-    {
-        if ($this->request) {
-            return $this->request;
-        }
-
-        $this->request = $this->container->get('request_stack')->getCurrentRequest();
-
-        return $this->request;
-    }
-
-    /**
-     * Get maximum range for a list request
-     *
-     * @return int
-     */
-    public function getMax()
-    {
-        return $this->container->get('request_stack')->getCurrentRequest()->get('max');
-    }
-
-    /**
-     * Get offset for a list request
-     *
-     * @return int
-     */
-    public function getOffset()
-    {
-        return (int) $this->getRequest()->get('offset');
-    }
-
-    /**
-     * Get order for a list request
-     *
-     * @return string one of (asc|desc)
-     */
-    public function getOrder()
-    {
-        return $this->getRequest()->get('order');
-    }
-
-    /**
-     * Get range for a list request
-     *
-     * @return mixed|null
-     */
-    public function getRange()
-    {
-        return $this->getRequest()->get('range');
-    }
-
-    /**
      * 400 - Bad Request
      *
      * The request could not be understood by the server due to malformed syntax. The client SHOULD NOT repeat
