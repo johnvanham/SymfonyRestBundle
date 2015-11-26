@@ -57,7 +57,7 @@ class ExceptionListenerTest extends \PHPUnit_Framework_TestCase
     {
         $response = new Response('Test response');
 
-        $viewHandler  = $this->getMock('\FOS\RestBundle\View\ViewHandler');
+        $viewHandler = $this->getMock('\FOS\RestBundle\View\ViewHandler');
         $viewHandler->expects($this->any())
             ->method('handle')
             ->willReturn($response);
@@ -77,7 +77,7 @@ class ExceptionListenerTest extends \PHPUnit_Framework_TestCase
 
         $response = new Response('Test response 2');
 
-        $viewHandler  = $this->getMock('\FOS\RestBundle\View\ViewHandler');
+        $viewHandler = $this->getMock('\FOS\RestBundle\View\ViewHandler');
         $viewHandler->expects($this->any())
             ->method('handle')
             ->willReturn($response);
