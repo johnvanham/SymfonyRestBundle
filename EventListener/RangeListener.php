@@ -109,8 +109,9 @@ class RangeListener
         $request->attributes->set('maxLimit', $this->maxLimit);
         $request->attributes->set('max', $this->max);
         $request->attributes->set('offset', $this->offset);
+        $range = $request->headers->get('range');
 
-        if ($range = $request->headers->get('range')) {
+        if ($range) {
             if (1 === preg_match('/(order)=(?P<order>(\w+))/', $range, $matches)) {
                 $request->attributes->set('order', $matches['order']);
             }
