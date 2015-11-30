@@ -5,11 +5,13 @@ namespace LoftDigital\RestBundle\EventListener;
 use Doctrine\ORM\Query\QueryException;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\View\ViewHandler;
+use LoftDigital\RestBundle\Model\HttpStatus;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 /**
  * Exception Listener
@@ -48,14 +50,21 @@ class ExceptionListener
     public function onKernelException(GetResponseForExceptionEvent $event)
     {
         $exception = $event->getException();
+
         $message = $exception->getMessage();
+        $code = 400;
+
         if ($exception instanceof QueryException) {
             $message = 'Request invalid, validate usage and try again.';
         }
 
+        if ($exception instanceof HttpException) {
+            $code = $exception->getStatusCode();
+        }
+
         $event->setResponse(
             $this->controller->handle(
-                new View(['id' => 'bad_request', 'message' => $message], 400),
+                new View(['id' => (new HttpStatus())->getIdForStatusCode($code), 'message' => $message], $code),
                 $event->getRequest()
             )
         );

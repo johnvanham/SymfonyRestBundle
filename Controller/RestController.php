@@ -4,6 +4,7 @@ namespace LoftDigital\RestBundle\Controller;
 
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\View\View;
+use LoftDigital\RestBundle\Model\HttpStatus;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -38,7 +39,7 @@ class RestController extends FOSRestController
             $message = 'Request invalid, validate usage and try again.';
         }
 
-        return $this->view(['id' => 'bad_request', 'message' => $message], 400);
+        return $this->view(['id' => (new HttpStatus())->getIdForStatusCode(400), 'message' => $message], 400);
     }
 
     /**
@@ -59,7 +60,7 @@ class RestController extends FOSRestController
             $message = 'Request failed, validate parameters and try again.';
         }
 
-        return $this->view(['id' => 'invalid_params', 'message' => $message], 422);
+        return $this->view(['id' => (new HttpStatus())->getIdForStatusCode(422), 'message' => $message], 422);
     }
 
     /**
@@ -79,7 +80,7 @@ class RestController extends FOSRestController
             $message = 'Request failed, the specified resource does not exist.';
         }
 
-        return $this->view(['id' => 'not_found', 'message' => $message], 404);
+        return $this->view(['id' => (new HttpStatus())->getIdForStatusCode(404), 'message' => $message], 404);
     }
 
     /**
