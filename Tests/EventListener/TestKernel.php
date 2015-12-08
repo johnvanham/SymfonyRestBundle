@@ -11,6 +11,8 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
  *
  * @copyright Loft Digital <www.loftdigital.com>, 2015
  * @package LoftDigital\RestBundle\Tests\EventListener
+ *
+ * @SuppressWarnings(PHPMD)
  */
 class TestKernel implements HttpKernelInterface
 {
