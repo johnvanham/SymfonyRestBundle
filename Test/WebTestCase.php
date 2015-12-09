@@ -5,6 +5,7 @@ namespace LoftDigital\RestBundle\Test;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase as FrameworkWebTestCase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -74,6 +75,8 @@ abstract class WebTestCase extends FrameworkWebTestCase
     abstract public function getBaseUri();
 
     /**
+     * Set URI
+     *
      * @param $route
      *
      * @return $this
@@ -86,6 +89,8 @@ abstract class WebTestCase extends FrameworkWebTestCase
     }
 
     /**
+     * Get HTTP client
+     *
      * @return Client
      */
     public function getClient()
@@ -94,7 +99,9 @@ abstract class WebTestCase extends FrameworkWebTestCase
     }
 
     /**
-     * @return null|\Symfony\Component\DomCrawler\Crawler
+     * Get crawler
+     *
+     * @return null|Crawler
      */
     public function getCrawler()
     {
@@ -102,6 +109,8 @@ abstract class WebTestCase extends FrameworkWebTestCase
     }
 
     /**
+     * Get container
+     *
      * @return ContainerInterface
      */
     public function getContainer()
@@ -110,6 +119,8 @@ abstract class WebTestCase extends FrameworkWebTestCase
     }
 
     /**
+     * Set URL parameters
+     *
      * @param array $parameters
      *
      * @return $this
@@ -122,6 +133,8 @@ abstract class WebTestCase extends FrameworkWebTestCase
     }
 
     /**
+     * Set request files
+     *
      * @param array $files
      *
      * @return $this
@@ -148,6 +161,8 @@ abstract class WebTestCase extends FrameworkWebTestCase
     }
 
     /**
+     * Set Accept type HTTP header
+     *
      * @param string $acceptType
      *
      * @return $this
@@ -164,6 +179,8 @@ abstract class WebTestCase extends FrameworkWebTestCase
     }
 
     /**
+     * Set Content-Type HTTP header
+     *
      * @param string $contentType
      *
      * @return $this
@@ -180,6 +197,8 @@ abstract class WebTestCase extends FrameworkWebTestCase
     }
 
     /**
+     * Set Range HTTP header
+     *
      * @param $range
      * @param $max
      * @param $offset
@@ -199,6 +218,8 @@ abstract class WebTestCase extends FrameworkWebTestCase
     }
 
     /**
+     * Get request content
+     *
      * @return string
      */
     public function getContent()
@@ -207,6 +228,8 @@ abstract class WebTestCase extends FrameworkWebTestCase
     }
 
     /**
+     * Set request content
+     *
      * @param string $content
      *
      * @return $this
@@ -235,6 +258,8 @@ abstract class WebTestCase extends FrameworkWebTestCase
     }
 
     /**
+     * Request client
+     *
      * @param string $method
      *
      * @return null|Response
@@ -255,6 +280,8 @@ abstract class WebTestCase extends FrameworkWebTestCase
     }
 
     /**
+     * Validate XML response data
+     *
      * @param string $xml
      *
      * @return bool|\SimpleXMLElement
@@ -268,12 +295,18 @@ abstract class WebTestCase extends FrameworkWebTestCase
             return false;
         }
 
-        $this->assertEmpty(libxml_get_errors());
+        $libXmlErrors = array_filter(libxml_get_errors(), function ($error) {
+            return $error->code !== 522;
+        });
+
+        $this->assertEmpty($libXmlErrors);
 
         return $xmlData;
     }
 
     /**
+     * Validate JSON response data
+     *
      * @param string $json
      * @param bool $assoc
      *
