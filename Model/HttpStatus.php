@@ -22,6 +22,7 @@ class HttpStatus
             400 => 'bad_request',
             422 => 'invalid_params',
             404 => 'not_found',
+            403 => 'forbidden',
         ];
     }
 

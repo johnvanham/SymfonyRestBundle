@@ -21,4 +21,4 @@ services:
     class: LoftDigital\RestBundle\EventListener\ExceptionListener
     arguments: ["@fos_rest.view_handler.default"]
     tags:
-      - { name: kernel.event_listener, event: kernel.exception }
+      - { name: kernel.event_listener, event: kernel.exception, priority: 100 }

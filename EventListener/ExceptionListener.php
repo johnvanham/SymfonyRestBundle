@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * Exception Listener
@@ -60,6 +61,11 @@ class ExceptionListener
 
         if ($exception instanceof HttpException) {
             $code = $exception->getStatusCode();
+        }
+
+        if ($exception instanceof AccessDeniedException) {
+            $message = 'Request not authorized, provided credentials do not provide access to specified resource.';
+            $code = $exception->getCode();
         }
 
         $event->setResponse(
