@@ -158,10 +158,10 @@ abstract class AbstractItemHandler
      */
     public function getAcceptOrders()
     {
-        return array(
+        return [
             self::ORDER_ASC,
             self::ORDER_DESC
-        );
+        ];
     }
 
     /**
