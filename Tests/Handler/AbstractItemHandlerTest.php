@@ -2,6 +2,7 @@
 
 namespace LoftDigital\RestBundle\Tests\Handler;
 
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\EntityManagerInterface;
 use LoftDigital\RestBundle\Handler\AbstractItemHandler;
 
@@ -100,8 +101,8 @@ class AbstractItemHandlerTest extends \PHPUnit_Framework_TestCase
         $itemHandler->setOrder(null);
         $this->assertEquals($itemHandler->getDefaultOrder(), $itemHandler->getOrder());
 
-        $itemHandler->setOrder(AbstractItemHandler::ORDER_ASC);
-        $this->assertEquals(AbstractItemHandler::ORDER_ASC, $itemHandler->getOrder());
+        $itemHandler->setOrder(Criteria::ASC);
+        $this->assertEquals(Criteria::ASC, $itemHandler->getOrder());
 
         $itemHandler->setOrder('dummy order');
     }

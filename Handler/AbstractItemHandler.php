@@ -2,10 +2,11 @@
 
 namespace LoftDigital\RestBundle\Handler;
 
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\EntityRepository;
-use Symfony\Component\HttpFoundation\RequestStack;
+use LoftDigital\RestBundle\Entity\EntityRepository;
+use Rss\UserApiBundle\Entity\User;
 
 /**
  * Item handler abstract class
@@ -31,8 +32,8 @@ abstract class AbstractItemHandler
     /** @var string */
     protected $order;
 
-    const ORDER_ASC = 'asc';
-    const ORDER_DESC = 'desc';
+    /** @var User */
+    protected $user;
 
     /**
      * @param EntityManagerInterface $entityManager
@@ -136,6 +137,8 @@ abstract class AbstractItemHandler
      */
     public function setOrder($order)
     {
+        $order = strtoupper($order);
+
         if ($order == null) {
             $this->order = $this->getDefaultOrder();
 
@@ -159,8 +162,8 @@ abstract class AbstractItemHandler
     public function getAcceptOrders()
     {
         return [
-            self::ORDER_ASC,
-            self::ORDER_DESC
+            Criteria::ASC,
+            Criteria::DESC
         ];
     }
 
@@ -171,6 +174,21 @@ abstract class AbstractItemHandler
      */
     public function getDefaultOrder()
     {
-        return self::ORDER_ASC;
+        return Criteria::ASC;
+    }
+
+    /**
+     * Set user object
+     *
+     * @param User $user
+     *
+     * @return $this
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
+        $this->repository->setUser($this->user);
+
+        return $this;
     }
 }
