@@ -4,6 +4,7 @@ namespace LoftDigital\RestBundle\Entity;
 
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\EntityRepository as GenericEntityRepository;
+use Doctrine\ORM\Query\ResultSetMapping;
 use Rss\UserApiBundle\Entity\User;
 
 /**
@@ -56,25 +57,27 @@ class EntityRepository extends GenericEntityRepository
             return $this->allowedStores;
         }
 
+        $resultSetMapping = new ResultSetMapping();
+        $resultSetMapping->addScalarResult('store_id', 'storeId');
+
         $userStores = $this->getEntityManager()
-            ->createQuery('
-                SELECT u2s.storeId
-                FROM RssUserApiBundle:UserToStore u2s
-                WHERE u2s.userId = :userId
-            ')
+            ->createNativeQuery('
+                SELECT u2s.store_id
+                FROM user_to_store u2s
+                WHERE u2s.user_id = :userId
+            ', $resultSetMapping)
             ->setParameter('userId', $this->user->getId())
             ->getResult();
 
         $userBrandStores = $this->getEntityManager()
-            ->createQuery('
-                SELECT s.id AS storeId FROM RssUserApiBundle:UserToBrand u2b
-                JOIN RssEntityApiBundle:Store AS s WITH s.brandId = u2b.brandId
-                WHERE u2b.userId = :userId
-                GROUP BY s.brandId
-            ')
+            ->createNativeQuery('
+                SELECT s.store_id
+                FROM user_to_brand u2b
+                JOIN store AS s ON s.brand_id = u2b.brand_id
+                WHERE u2b.user_id = :userId
+            ', $resultSetMapping)
             ->setParameter('userId', $this->user->getId())
-            ->getResult()
-        ;
+            ->getResult();
 
         $this->allowedStores = array_unique(array_map(function ($item) {
             return $item['storeId'];
