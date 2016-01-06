@@ -47,7 +47,7 @@ class EntityRepository extends GenericEntityRepository
      *
      * @return array
      */
-    public function findAllowedStoresForUserId()
+    public function findAllowedStoresForUser()
     {
         if ($this->user === null) {
             return [];
