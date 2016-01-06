@@ -2,6 +2,7 @@
 
 namespace LoftDigital\RestBundle\Test;
 
+use Rss\UserApiBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase as FrameworkWebTestCase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -24,6 +25,9 @@ abstract class WebTestCase extends FrameworkWebTestCase
 
     /** @var string */
     protected $token;
+
+    /** @var User */
+    protected $testUser;
 
     /** @var string */
     protected $uri;
@@ -64,6 +68,9 @@ abstract class WebTestCase extends FrameworkWebTestCase
     {
         $this->container = static::createClient()->getKernel()->getContainer();
         $user = $this->container->getParameter('loft_digital_rest_oauth.user');
+        $this->testUser = $this->container
+            ->get('rss_user_api.user_handler')
+            ->get((new User())->setEmail($user['email']));
         $this->token = $user['token'];
     }
 
