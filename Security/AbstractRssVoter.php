@@ -21,6 +21,8 @@ abstract class AbstractRssVoter extends AbstractVoter
     protected $container;
 
     /**
+     * Constructor
+     *
      * @param ContainerInterface $container
      */
     public function __construct(ContainerInterface $container)
@@ -29,19 +31,15 @@ abstract class AbstractRssVoter extends AbstractVoter
     }
 
     /**
-     * Checks if users are the same by id
+     * Checks if users are the same by ID
      *
-     * @param $checkUser User
-     * @param $user User
+     * @param User $checkUser
+     * @param User $user
      *
      * @return bool
      */
-    protected function isSameUser($checkUser, $user)
+    protected function isSameUser(User $checkUser, User $user)
     {
-        if ($checkUser->getId() == $user->getId()) {
-            return true;
-        }
-
-        return false;
+        return $checkUser->getId() === $user->getId();
     }
 }
