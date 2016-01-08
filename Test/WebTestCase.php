@@ -67,11 +67,24 @@ abstract class WebTestCase extends FrameworkWebTestCase
     public function setUp()
     {
         $this->container = static::createClient()->getKernel()->getContainer();
-        $user = $this->container->getParameter('loft_digital_rest_oauth.user');
+        $user = $this->container->getParameter('loft_digital_jwt_authentication.user');
         $this->testUser = $this->container
             ->get('rss_user_api.user_handler')
             ->get((new User())->setEmail($user['email']));
-        $this->token = $user['token'];
+
+        $authResponse = $this
+            ->setUri('/api/login_check', false)
+            ->setContentTypeHeader(self::CONTENT_JSON)
+            ->setContent(json_encode([
+                '_username' => $user['email'],
+                '_password' => $user['password'],
+            ]))
+            ->requestClient(self::METHOD_POST)
+            ->getContent();
+
+        $this->assertJson($authResponse);
+
+        $this->token = json_decode($authResponse, true)['token'];
     }
 
     /**
@@ -84,13 +97,14 @@ abstract class WebTestCase extends FrameworkWebTestCase
     /**
      * Set URI
      *
-     * @param $route
+     * @param string $route
+     * @param bool $prependBaseUri
      *
      * @return $this
      */
-    public function setUri($route = '')
+    public function setUri($route = '', $prependBaseUri = true)
     {
-        $this->uri =  $this->getBaseUri() . $route;
+        $this->uri =  ($prependBaseUri ? $this->getBaseUri() : '') . $route;
 
         return $this;
     }
