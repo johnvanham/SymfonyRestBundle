@@ -24,6 +24,5 @@ services:
       - { name: kernel.event_listener, event: kernel.exception, priority: 100 }
   loft_digital_rest.event.jwt_created_listener:
     class: LoftDigital\RestBundle\EventListener\JWTCreatedListener
-    arguments: [ @jms_serializer ]
     tags:
         - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: onJWTCreated }

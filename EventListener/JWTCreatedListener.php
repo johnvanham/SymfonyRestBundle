@@ -2,8 +2,8 @@
 
 namespace LoftDigital\RestBundle\EventListener;
 
-use JMS\Serializer\Serializer;
 use Lexik\Bundle\JWTAuthenticationBundle\Event\JWTCreatedEvent;
+use Rss\UserApiBundle\Entity\User;
 
 /**
  * JWT Created Listener
@@ -16,18 +16,6 @@ use Lexik\Bundle\JWTAuthenticationBundle\Event\JWTCreatedEvent;
  */
 class JWTCreatedListener
 {
-    protected $serializer;
-
-    /**
-     * Constructor
-     *
-     * @param Serializer $serializer
-     */
-    public function __construct(Serializer $serializer)
-    {
-        $this->serializer = $serializer;
-    }
-
     /**
      * Add data after JWT was created
      *
@@ -40,8 +28,10 @@ class JWTCreatedListener
             return;
         }
 
+        $user = $event->getUser();
+
         $payload = $event->getData();
-        $payload['user'] = $this->serializer->serialize($event->getUser(), 'json');
+        $payload['id'] = $user instanceof User ? $user->getId() : null;
 
         $event->setData($payload);
     }
