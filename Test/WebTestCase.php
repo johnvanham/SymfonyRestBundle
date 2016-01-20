@@ -73,10 +73,10 @@ abstract class WebTestCase extends FrameworkWebTestCase
             ->get((new User())->setEmail($user['email']));
 
         $authResponse = $this
-            ->setUri('/api/login_check', false)
+            ->setLoginCheckUri()
             ->setContentTypeHeader(self::CONTENT_JSON)
             ->setContent(json_encode([
-                '_username' => $user['email'],
+                '_username' => $user['username'],
                 '_password' => $user['password'],
             ]))
             ->requestClient(self::METHOD_POST)
@@ -98,13 +98,24 @@ abstract class WebTestCase extends FrameworkWebTestCase
      * Set URI
      *
      * @param string $route
-     * @param bool $prependBaseUri
      *
      * @return $this
      */
-    public function setUri($route = '', $prependBaseUri = true)
+    public function setUri($route = '')
     {
-        $this->uri =  ($prependBaseUri ? $this->getBaseUri() : '') . $route;
+        $this->uri = $this->getBaseUri() . $route;
+
+        return $this;
+    }
+
+    /**
+     * Set login check URI
+     *
+     * @return $this
+     */
+    protected function setLoginCheckUri()
+    {
+        $this->uri = '/api/login_check';
 
         return $this;
     }
