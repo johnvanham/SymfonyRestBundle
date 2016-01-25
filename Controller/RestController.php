@@ -5,6 +5,8 @@ namespace LoftDigital\RestBundle\Controller;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\View\View;
 use LoftDigital\RestBundle\Model\HttpStatus;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Form\FormErrorIterator;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -24,8 +26,8 @@ class RestController extends FOSRestController
     /**
      * 400 - Bad Request
      *
-     * The request could not be understood by the server due to malformed syntax. The client SHOULD NOT repeat
-     * the request without modifications.
+     * The request could not be understood by the server due to malformed
+     * syntax. The client SHOULD NOT repeat the request without modifications.
      *
      * @link http://www.restpatterns.org/HTTP_Status_Codes/400_-_Bad_Request
      *
@@ -39,14 +41,21 @@ class RestController extends FOSRestController
             $message = 'Request invalid, validate usage and try again.';
         }
 
-        return $this->view(['id' => (new HttpStatus())->getIdForStatusCode(400), 'message' => $message], 400);
+        return $this->view(
+            [
+                'id' => (new HttpStatus())->getIdForStatusCode(400),
+                'message' => $message
+            ],
+            400
+        );
     }
 
     /**
      * 422 - Unprocessable Entity
      *
-     * Server understands the content type of the request entity, and the syntax of the request entity is correct
-     * but was unable to process the contained instructions.
+     * Server understands the content type of the request entity, and the syntax
+     * of the request entity is correct but was unable to process the contained
+     * instructions.
      *
      * @link http://www.restpatterns.org/HTTP_Status_Codes/422_-_Unprocessable_Entity
      *
@@ -60,7 +69,12 @@ class RestController extends FOSRestController
             $message = 'Request failed, validate parameters and try again.';
         }
 
-        return $this->view(['id' => (new HttpStatus())->getIdForStatusCode(422), 'message' => $message], 422);
+        return $this->view(
+            [
+                'id' => (new HttpStatus())->getIdForStatusCode(422),
+                'message' => $message],
+            422
+        );
     }
 
     /**
@@ -80,7 +94,40 @@ class RestController extends FOSRestController
             $message = 'Request failed, the specified resource does not exist.';
         }
 
-        return $this->view(['id' => (new HttpStatus())->getIdForStatusCode(404), 'message' => $message], 404);
+        return $this->view(
+            [
+                'id' => (new HttpStatus())->getIdForStatusCode(404),
+                'message' => $message
+            ],
+            404
+        );
+    }
+
+    /**
+     * 409 - Conflict
+     *
+     * The request could not be completed due to a conflict with the current
+     * state of the resource.
+     *
+     * @link http://www.restpatterns.org/HTTP_Status_Codes/409_-_Conflict
+     *
+     * @param string|null $message
+     *
+     * @return View
+     */
+    public function statusConflict($message = null)
+    {
+        if ($message == null) {
+            $message = 'Request failed, the resource already exist.';
+        }
+
+        return $this->view(
+            [
+                'id' => (new HttpStatus())->getIdForStatusCode(409),
+                'message' => $message
+            ],
+            409
+        );
     }
 
     /**
@@ -97,5 +144,34 @@ class RestController extends FOSRestController
     public function statusCreated($object)
     {
         return $this->view($object, 201);
+    }
+
+    /**
+     * Process form errors
+     *
+     * @param FormErrorIterator $formErrors
+     *
+     * @return View
+     */
+    protected function processFormValidationError(FormErrorIterator $formErrors)
+    {
+        $invalidFields = [];
+        foreach ($formErrors as $error) {
+            $cause = $error->getCause();
+            if ($cause->getConstraint() instanceof UniqueEntity) {
+                return $this->statusConflict();
+            }
+
+            $property = $cause->getPropertyPath();
+            $property = strpos($property, 'data.') === 0
+                ? substr($property, 5)
+                : $property;
+
+            $invalidFields[] = $property;
+        }
+
+        return $this->statusBadRequest(
+            sprintf('Invalid fields: %s', implode(', ', $invalidFields))
+        );
     }
 }

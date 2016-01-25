@@ -23,6 +23,7 @@ class HttpStatus
             422 => 'invalid_params',
             404 => 'not_found',
             403 => 'forbidden',
+            409 => 'conflict',
         ];
     }
 
