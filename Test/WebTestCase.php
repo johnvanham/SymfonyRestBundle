@@ -70,7 +70,7 @@ abstract class WebTestCase extends FrameworkWebTestCase
         $user = $this->container->getParameter('loft_digital_jwt_authentication.user');
         $this->testUser = $this->container
             ->get('rss_user_api.user_handler')
-            ->get((new User())->setEmail($user['email']));
+            ->get((new User())->setUsername($user['username']));
 
         $authResponse = $this
             ->setLoginCheckUri()
