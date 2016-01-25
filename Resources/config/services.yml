@@ -15,8 +15,6 @@ services:
     arguments: ["@service_container"]
     tags:
         - { name: kernel.event_listener, event: kernel.view, method: onKernelView, priority: 111 }
-  loft_digital_rest.form_helper:
-    class:  LoftDigital\RestBundle\Services\FormHelper
   loft_digital_rest.exception_listener:
     class: LoftDigital\RestBundle\EventListener\ExceptionListener
     arguments: ["@fos_rest.view_handler.default"]
