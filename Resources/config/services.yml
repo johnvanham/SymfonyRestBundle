@@ -24,3 +24,7 @@ services:
     class: LoftDigital\RestBundle\EventListener\JWTCreatedListener
     tags:
         - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: onJWTCreated }
+  loft_digital_rest.cors_listener:
+      class: LoftDigital\RestBundle\EventListener\CorsListener
+      tags:
+         - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
