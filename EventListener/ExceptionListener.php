@@ -14,6 +14,7 @@ use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
+use Symfony\Component\Security\Core\Exception\CredentialsExpiredException;
 
 /**
  * Exception Listener
@@ -71,6 +72,10 @@ class ExceptionListener
 
         if ($exception instanceof AuthenticationException) {
             $code = 401;
+        }
+
+        if ($exception instanceof CredentialsExpiredException) {
+            $code = 403;
         }
 
         $event->setResponse(
