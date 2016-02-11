@@ -22,13 +22,21 @@ class CorsListener
      */
     public function onKernelResponse(FilterResponseEvent $event)
     {
-        $allowHeaders = implode(', ', [
+        $exposeHeaders = implode(', ', [
             'Accept-Ranges',
             'Content-Range',
-            'Next-Range'
+            'Next-Range',
+        ]);
+
+        $allowHeaders = implode(', ', [
+            'Accept',
+            'Content-Type',
+            'Range',
+            'Authorization',
         ]);
 
         $responseHeaders = $event->getResponse()->headers;
-        $responseHeaders->set('Access-Control-Expose-Headers', $allowHeaders);
+        $responseHeaders->set('Access-Control-Expose-Headers', $exposeHeaders);
+        $responseHeaders->set('Access-Control-Allow-Headers', $allowHeaders);
     }
 }
