@@ -5,8 +5,8 @@ namespace LoftDigital\SymfonyRestBundle\Handler;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
+use FOS\UserBundle\Model\User;
 use LoftDigital\SymfonyRestBundle\Entity\EntityRepository;
-use Rss\UserApiBundle\Entity\User;
 
 /**
  * Item handler abstract class

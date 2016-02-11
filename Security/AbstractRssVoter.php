@@ -2,7 +2,7 @@
 
 namespace LoftDigital\SymfonyRestBundle\Security;
 
-use Rss\UserApiBundle\Entity\User;
+use FOS\UserBundle\Model\User;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\AbstractVoter;
 
