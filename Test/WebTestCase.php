@@ -1,6 +1,6 @@
 <?php
 
-namespace LoftDigital\RestBundle\Test;
+namespace LoftDigital\SymfonyRestBundle\Test;
 
 use Rss\UserApiBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Client;
@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @author Lukas Hajdu <lukas@loftdigital.com>
  * @copyright Loft Digital <www.loftdigital.com>, 2015
- * @package LoftDigital\RestBundle\Test
+ * @package LoftDigital\SymfonyRestBundle\Test
  */
 abstract class WebTestCase extends FrameworkWebTestCase
 {

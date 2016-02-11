@@ -1,20 +1,20 @@
 <?php
 
-namespace LoftDigital\RestBundle\Tests\Model;
+namespace LoftDigital\SymfonyRestBundle\Tests\Model;
 
-use LoftDigital\RestBundle\Model\HttpStatus;
+use LoftDigital\SymfonyRestBundle\Model\HttpStatus;
 
 /**
  * Class HttpStatusTest
  *
  * @author Lukas Hajdu <lukas@loftdigital.com>
  * @copyright Loft Digital <www.loftdigital.com>, 2015
- * @package LoftDigital\RestBundle\Tests\Model
+ * @package LoftDigital\SymfonyRestBundle\Tests\Model
  */
 class HttpStatusTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers \LoftDigital\RestBundle\Model\HttpStatus::getStatusCodeIdMapping
+     * @covers \LoftDigital\SymfonyRestBundle\Model\HttpStatus::getStatusCodeIdMapping
      */
     public function testGetStatusCodeIdMapping()
     {
@@ -22,7 +22,7 @@ class HttpStatusTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \LoftDigital\RestBundle\Model\HttpStatus::getIdForStatusCode
+     * @covers \LoftDigital\SymfonyRestBundle\Model\HttpStatus::getIdForStatusCode
      */
     public function testGetIdForStatusCode()
     {

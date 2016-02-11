@@ -1,6 +1,6 @@
 <?php
 
-namespace LoftDigital\RestBundle\Entity;
+namespace LoftDigital\SymfonyRestBundle\Entity;
 
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\EntityRepository as GenericEntityRepository;
@@ -12,7 +12,7 @@ use Rss\UserApiBundle\Entity\User;
  *
  * @author Lukas Hajdu <lukas@loftdigital.com>
  * @copyright Loft Digital <www.loftdigital.com>, 2016
- * @package LoftDigital\RestBundle\Entity
+ * @package LoftDigital\SymfonyRestBundle\Entity
  */
 class EntityRepository extends GenericEntityRepository
 {

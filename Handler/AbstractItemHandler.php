@@ -1,11 +1,11 @@
 <?php
 
-namespace LoftDigital\RestBundle\Handler;
+namespace LoftDigital\SymfonyRestBundle\Handler;
 
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
-use LoftDigital\RestBundle\Entity\EntityRepository;
+use LoftDigital\SymfonyRestBundle\Entity\EntityRepository;
 use Rss\UserApiBundle\Entity\User;
 
 /**
@@ -13,7 +13,7 @@ use Rss\UserApiBundle\Entity\User;
  *
  * @author Lukas Hajdu <lukas@loftdigital.com>
  * @copyright Loft Digital <www.loftdigital.com>, 2015
- * @package LoftDigital\RestBundle\Handler
+ * @package LoftDigital\SymfonyRestBundle\Handler
  */
 abstract class AbstractItemHandler
 {

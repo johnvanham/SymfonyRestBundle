@@ -1,6 +1,6 @@
 <?php
 
-namespace LoftDigital\RestBundle\Handler;
+namespace LoftDigital\SymfonyRestBundle\Handler;
 
 use Exception;
 
@@ -9,7 +9,7 @@ use Exception;
  *
  * @author Lukas Hajdu <lukas@loftdigital.com>
  * @copyright Loft Digital <http://weareloft.com>, 2016
- * @package LoftDigital\RestBundle\Handler
+ * @package LoftDigital\SymfonyRestBundle\Handler
  */
 class UnsupportedReportTypeException extends Exception
 {

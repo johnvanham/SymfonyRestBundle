@@ -1,6 +1,6 @@
 <?php
 
-namespace LoftDigital\RestBundle\EventListener;
+namespace LoftDigital\SymfonyRestBundle\EventListener;
 
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 
@@ -17,7 +17,7 @@ use Symfony\Component\HttpKernel\Event\GetResponseEvent;
  *
  * @author Lukas Hajdu <lukas@loftdigital.com>
  * @copyright Loft Digital <www.loftdigital.com>, 2015
- * @package LoftDigital\RestBundle\EventListener
+ * @package LoftDigital\SymfonyRestBundle\EventListener
  */
 class RangeListener
 {

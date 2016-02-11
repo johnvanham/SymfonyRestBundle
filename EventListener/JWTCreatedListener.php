@@ -1,6 +1,6 @@
 <?php
 
-namespace LoftDigital\RestBundle\EventListener;
+namespace LoftDigital\SymfonyRestBundle\EventListener;
 
 use FOS\UserBundle\Model\User;
 use Lexik\Bundle\JWTAuthenticationBundle\Event\JWTCreatedEvent;
@@ -12,7 +12,7 @@ use Lexik\Bundle\JWTAuthenticationBundle\Event\JWTCreatedEvent;
  *
  * @author Lukas Hajdu <lukas@loftdigital.com>
  * @copyright Loft Digital <www.loftdigital.com>, 2016
- * @package LoftDigital\RestBundle\EventListener
+ * @package LoftDigital\SymfonyRestBundle\EventListener
  */
 class JWTCreatedListener
 {

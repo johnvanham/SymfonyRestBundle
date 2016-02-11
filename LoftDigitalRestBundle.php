@@ -1,6 +1,6 @@
 <?php
 
-namespace LoftDigital\RestBundle;
+namespace LoftDigital\SymfonyRestBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

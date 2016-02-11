@@ -1,7 +1,7 @@
 ---
 services:
   loft_digital_rest.range_listener:
-    class: LoftDigital\RestBundle\EventListener\RangeListener
+    class: LoftDigital\SymfonyRestBundle\EventListener\RangeListener
     arguments: ["@fos_rest.view_handler.default"]
     tags:
       - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 32 }
@@ -11,24 +11,24 @@ services:
       - [setOrder, ["%loft_digital_rest.range_listener.order%"]]
       - [setMaxLimit, ["%loft_digital_rest.range_listener.max_limit%"]]
   loft_digital_rest.view_response_listener:
-    class: LoftDigital\RestBundle\EventListener\ViewResponseListener
+    class: LoftDigital\SymfonyRestBundle\EventListener\ViewResponseListener
     arguments: ["@service_container"]
     tags:
         - { name: kernel.event_listener, event: kernel.view, method: onKernelView, priority: 111 }
   loft_digital_rest.exception_listener:
-    class: LoftDigital\RestBundle\EventListener\ExceptionListener
+    class: LoftDigital\SymfonyRestBundle\EventListener\ExceptionListener
     arguments: ["@fos_rest.view_handler.default"]
     tags:
       - { name: kernel.event_listener, event: kernel.exception, priority: 100 }
   loft_digital_rest.event.jwt_created_listener:
-    class: LoftDigital\RestBundle\EventListener\JWTCreatedListener
+    class: LoftDigital\SymfonyRestBundle\EventListener\JWTCreatedListener
     tags:
         - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: onJWTCreated }
   loft_digital_rest.cors_listener:
-    class: LoftDigital\RestBundle\EventListener\CorsListener
+    class: LoftDigital\SymfonyRestBundle\EventListener\CorsListener
     tags:
       - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
   loft_digital_rest.unauthorised_listener:
-    class: LoftDigital\RestBundle\EventListener\UnauthorisedListener
+    class: LoftDigital\SymfonyRestBundle\EventListener\UnauthorisedListener
     tags:
       - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }

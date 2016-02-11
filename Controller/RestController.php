@@ -1,10 +1,10 @@
 <?php
 
-namespace LoftDigital\RestBundle\Controller;
+namespace LoftDigital\SymfonyRestBundle\Controller;
 
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\View\View;
-use LoftDigital\RestBundle\Model\HttpStatus;
+use LoftDigital\SymfonyRestBundle\Model\HttpStatus;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Form\FormErrorIterator;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @author Lukas Hajdu <lukas@loftdigital.com>
  * @copyright Loft Digital <www.loftdigital.com>, 2015
- * @package LoftDigital\RestBundle\Controller
+ * @package LoftDigital\SymfonyRestBundle\Controller
  */
 class RestController extends FOSRestController
 {

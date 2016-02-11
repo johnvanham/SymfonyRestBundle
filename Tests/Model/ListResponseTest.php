@@ -1,16 +1,16 @@
 <?php
 
-namespace LoftDigital\RestBundle\Tests\Model;
+namespace LoftDigital\SymfonyRestBundle\Tests\Model;
 
 use ArrayIterator;
 use ArrayObject;
 use Doctrine\ORM\Tools\Pagination\Paginator;
-use LoftDigital\RestBundle\Model\ListResponse;
+use LoftDigital\SymfonyRestBundle\Model\ListResponse;
 
 /**
  * Class ListResponseTest
  *
- * @package LoftDigital\RestBundle\Tests\Model
+ * @package LoftDigital\SymfonyRestBundle\Tests\Model
  */
 class ListResponseTest extends \PHPUnit_Framework_TestCase
 {
@@ -68,14 +68,14 @@ class ListResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \LoftDigital\RestBundle\Model\ListResponse::__construct
-     * @covers \LoftDigital\RestBundle\Model\ListResponse::__construct
-     * @covers \LoftDigital\RestBundle\Model\ListResponse::getTotalItemCount
-     * @covers \LoftDigital\RestBundle\Model\ListResponse::getIterator
-     * @covers \LoftDigital\RestBundle\Model\ListResponse::getPageItemCount
-     * @covers \LoftDigital\RestBundle\Model\ListResponse::getOffset
-     * @covers \LoftDigital\RestBundle\Model\ListResponse::getAcceptRanges
-     * @covers \LoftDigital\RestBundle\Model\ListResponse::getRange
+     * @covers \LoftDigital\SymfonyRestBundle\Model\ListResponse::__construct
+     * @covers \LoftDigital\SymfonyRestBundle\Model\ListResponse::__construct
+     * @covers \LoftDigital\SymfonyRestBundle\Model\ListResponse::getTotalItemCount
+     * @covers \LoftDigital\SymfonyRestBundle\Model\ListResponse::getIterator
+     * @covers \LoftDigital\SymfonyRestBundle\Model\ListResponse::getPageItemCount
+     * @covers \LoftDigital\SymfonyRestBundle\Model\ListResponse::getOffset
+     * @covers \LoftDigital\SymfonyRestBundle\Model\ListResponse::getAcceptRanges
+     * @covers \LoftDigital\SymfonyRestBundle\Model\ListResponse::getRange
      */
     public function testConstructor()
     {
@@ -90,7 +90,7 @@ class ListResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \LoftDigital\RestBundle\Model\ListResponse::getData
+     * @covers \LoftDigital\SymfonyRestBundle\Model\ListResponse::getData
      */
     public function testGetData()
     {
@@ -100,7 +100,7 @@ class ListResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \LoftDigital\RestBundle\Model\ListResponse::getNextRangeHeader
+     * @covers \LoftDigital\SymfonyRestBundle\Model\ListResponse::getNextRangeHeader
      */
     public function testGetNextRangeHeader()
     {
@@ -118,7 +118,7 @@ class ListResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \LoftDigital\RestBundle\Model\ListResponse::getContentRangeHeader
+     * @covers \LoftDigital\SymfonyRestBundle\Model\ListResponse::getContentRangeHeader
      */
     public function testGetContentRangeHeader()
     {
@@ -149,7 +149,7 @@ class ListResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \LoftDigital\RestBundle\Model\ListResponse::getAcceptRangesHeader
+     * @covers \LoftDigital\SymfonyRestBundle\Model\ListResponse::getAcceptRangesHeader
      */
     public function testGetAcceptRangesHeader()
     {
@@ -162,7 +162,7 @@ class ListResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \LoftDigital\RestBundle\Model\ListResponse::getHeaders
+     * @covers \LoftDigital\SymfonyRestBundle\Model\ListResponse::getHeaders
      */
     public function testGetHeaders()
     {
@@ -188,7 +188,7 @@ class ListResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \LoftDigital\RestBundle\Model\ListResponse::getStatusCode
+     * @covers \LoftDigital\SymfonyRestBundle\Model\ListResponse::getStatusCode
      */
     public function testGetStatusCode()
     {

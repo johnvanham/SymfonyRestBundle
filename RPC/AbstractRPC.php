@@ -1,6 +1,6 @@
 <?php
 
-namespace LoftDigital\RestBundle\RPC;
+namespace LoftDigital\SymfonyRestBundle\RPC;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 

@@ -1,20 +1,20 @@
 <?php
 
-namespace LoftDigital\RestBundle\Tests\EventListener;
+namespace LoftDigital\SymfonyRestBundle\Tests\EventListener;
 
-use LoftDigital\RestBundle\EventListener\RangeListener;
+use LoftDigital\SymfonyRestBundle\EventListener\RangeListener;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 
 /**
  * Class RangeListenerTest
  *
- * @package LoftDigital\RestBundle\Tests\EventListener
+ * @package LoftDigital\SymfonyRestBundle\Tests\EventListener
  */
 class RangeListenerTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers \LoftDigital\RestBundle\EventListener\RangeListener::onKernelRequest
+     * @covers \LoftDigital\SymfonyRestBundle\EventListener\RangeListener::onKernelRequest
      */
     public function testOnKernelRequestDefault()
     {
@@ -46,7 +46,7 @@ class RangeListenerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \LoftDigital\RestBundle\EventListener\RangeListener::onKernelRequest
+     * @covers \LoftDigital\SymfonyRestBundle\EventListener\RangeListener::onKernelRequest
      */
     public function testOnKernelRequestWithHeaders()
     {
@@ -77,14 +77,14 @@ class RangeListenerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \LoftDigital\RestBundle\EventListener\RangeListener::setMax
-     * @covers \LoftDigital\RestBundle\EventListener\RangeListener::getMax
-     * @covers \LoftDigital\RestBundle\EventListener\RangeListener::setOffset
-     * @covers \LoftDigital\RestBundle\EventListener\RangeListener::getOffset
-     * @covers \LoftDigital\RestBundle\EventListener\RangeListener::getOrder
-     * @covers \LoftDigital\RestBundle\EventListener\RangeListener::setOrder
-     * @covers \LoftDigital\RestBundle\EventListener\RangeListener::getMaxLimit
-     * @covers \LoftDigital\RestBundle\EventListener\RangeListener::setMaxLimit
+     * @covers \LoftDigital\SymfonyRestBundle\EventListener\RangeListener::setMax
+     * @covers \LoftDigital\SymfonyRestBundle\EventListener\RangeListener::getMax
+     * @covers \LoftDigital\SymfonyRestBundle\EventListener\RangeListener::setOffset
+     * @covers \LoftDigital\SymfonyRestBundle\EventListener\RangeListener::getOffset
+     * @covers \LoftDigital\SymfonyRestBundle\EventListener\RangeListener::getOrder
+     * @covers \LoftDigital\SymfonyRestBundle\EventListener\RangeListener::setOrder
+     * @covers \LoftDigital\SymfonyRestBundle\EventListener\RangeListener::getMaxLimit
+     * @covers \LoftDigital\SymfonyRestBundle\EventListener\RangeListener::setMaxLimit
      */
     public function testSettersAndGetter()
     {

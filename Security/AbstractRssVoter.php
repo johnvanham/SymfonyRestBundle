@@ -1,6 +1,6 @@
 <?php
 
-namespace LoftDigital\RestBundle\Security;
+namespace LoftDigital\SymfonyRestBundle\Security;
 
 use Rss\UserApiBundle\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\Authorization\Voter\AbstractVoter;
  *
  * @author George Mylonas <georgem@loftdigital.com>
  * @copyright Loft Digital <www.loftdigital.com>, 2015
- * @package LoftDigital\RestBundle\Security\AbstractRssVoter
+ * @package LoftDigital\SymfonyRestBundle\Security\AbstractRssVoter
  */
 abstract class AbstractRssVoter extends AbstractVoter
 {

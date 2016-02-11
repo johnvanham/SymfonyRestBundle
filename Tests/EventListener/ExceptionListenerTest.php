@@ -1,11 +1,11 @@
 <?php
 
-namespace LoftDigital\RestBundle\Tests\EventListener;
+namespace LoftDigital\SymfonyRestBundle\Tests\EventListener;
 
 use Doctrine\ORM\Query\QueryException;
 use FOS\RestBundle\View\View;
-use LoftDigital\RestBundle\EventListener\ExceptionListener;
-use LoftDigital\RestBundle\Handler\UnsupportedRangeFormatException;
+use LoftDigital\SymfonyRestBundle\EventListener\ExceptionListener;
+use LoftDigital\SymfonyRestBundle\Handler\UnsupportedRangeFormatException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
@@ -15,7 +15,7 @@ use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
  *
  * @author Lukas Hajdu <lukas@loftdigital.com>
  * @copyright Loft Digital <www.loftdigital.com>, 2015
- * @package LoftDigital\RestBundle\Tests\EventListener
+ * @package LoftDigital\SymfonyRestBundle\Tests\EventListener
  */
 class ExceptionListenerTest extends \PHPUnit_Framework_TestCase
 {
@@ -46,7 +46,7 @@ class ExceptionListenerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \LoftDigital\RestBundle\EventListener\ExceptionListener::onKernelException
+     * @covers \LoftDigital\SymfonyRestBundle\EventListener\ExceptionListener::onKernelException
      *
      * @dataProvider provider
      *
@@ -63,7 +63,7 @@ class ExceptionListenerTest extends \PHPUnit_Framework_TestCase
             ->willReturn($response);
 
         /** @var ExceptionListener|\PHPUnit_Framework_MockObject_MockObject $listener */
-        $listener = $this->getMockBuilder('\LoftDigital\RestBundle\EventListener\ExceptionListener')
+        $listener = $this->getMockBuilder('\LoftDigital\SymfonyRestBundle\EventListener\ExceptionListener')
             ->setConstructorArgs([$viewHandler])
             ->setMethods(['getView'])
             ->getMock();
@@ -83,7 +83,7 @@ class ExceptionListenerTest extends \PHPUnit_Framework_TestCase
             ->willReturn($response);
 
         /** @var ExceptionListener|\PHPUnit_Framework_MockObject_MockObject $listener */
-        $listener = $this->getMockBuilder('\LoftDigital\RestBundle\EventListener\ExceptionListener')
+        $listener = $this->getMockBuilder('\LoftDigital\SymfonyRestBundle\EventListener\ExceptionListener')
             ->setConstructorArgs([$viewHandler])
             ->setMethods(['getView'])
             ->getMock();

@@ -1,13 +1,13 @@
 <?php
 
-namespace LoftDigital\RestBundle\Controller;
+namespace LoftDigital\SymfonyRestBundle\Controller;
 
 /**
  * Interface UserResponseRestrictionInterface
  *
  * @author Lukas Hajdu <lukas@loftdigital.com>
  * @copyright Loft Digital <www.loftdigital.com>, 2016
- * @package LoftDigital\RestBundle\Controlle
+ * @package LoftDigital\SymfonyRestBundle\Controlle
  */
 interface UserResponseRestrictionInterface
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace LoftDigital\RestBundle\EventListener;
+namespace LoftDigital\SymfonyRestBundle\EventListener;
 
 use FOS\RestBundle\View\View;
-use LoftDigital\RestBundle\Model\ListResponse;
+use LoftDigital\SymfonyRestBundle\Model\ListResponse;
 use Sensio\Bundle\FrameworkExtraBundle\EventListener\TemplateListener;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 
@@ -14,7 +14,7 @@ use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
  *
  * @author Lukas Hajdu <lukas@loftdigital.com>
  * @copyright Loft Digital <www.loftdigital.com>, 2015
- * @package LoftDigital\RestBundle\EventListener
+ * @package LoftDigital\SymfonyRestBundle\EventListener
  */
 class ViewResponseListener extends TemplateListener
 {
