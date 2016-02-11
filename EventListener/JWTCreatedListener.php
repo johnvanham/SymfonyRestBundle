@@ -2,8 +2,8 @@
 
 namespace LoftDigital\RestBundle\EventListener;
 
+use FOS\UserBundle\Model\User;
 use Lexik\Bundle\JWTAuthenticationBundle\Event\JWTCreatedEvent;
-use Rss\UserApiBundle\Entity\User;
 
 /**
  * JWT Created Listener
