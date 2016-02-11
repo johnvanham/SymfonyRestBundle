@@ -29,10 +29,5 @@
         "psr-4": {
             "LoftDigital\\SymfonyRestBundle\\": ""
         }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "SymfonyRestBundle\\": "tests/SymfonyRestBundle"
-        }
     }
 }
