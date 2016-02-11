@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  * Class AbstractRPC
  *
  * @author Tomas Lang <tomas@loftdigital.com>
- * @copyright Loft Digital <www.loftdigital.com>, 2015
+ * @copyright Loft Digital <http://weareloft.com>, 2015
  * @package Rss\EnquiryApiBundle\RPC
  */
 abstract class AbstractRPC extends Controller

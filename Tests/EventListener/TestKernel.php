@@ -9,7 +9,7 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 /**
  * Class TestKernel
  *
- * @copyright Loft Digital <www.loftdigital.com>, 2015
+ * @copyright Loft Digital <http://weareloft.com>, 2015
  * @package LoftDigital\SymfonyRestBundle\Tests\EventListener
  *
  * @SuppressWarnings(PHPMD)

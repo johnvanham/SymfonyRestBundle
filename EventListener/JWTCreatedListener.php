@@ -11,7 +11,7 @@ use Lexik\Bundle\JWTAuthenticationBundle\Event\JWTCreatedEvent;
  * Lister appends data to JWT after a web token was created
  *
  * @author Lukas Hajdu <lukas@loftdigital.com>
- * @copyright Loft Digital <www.loftdigital.com>, 2016
+ * @copyright Loft Digital <http://weareloft.com>, 2016
  * @package LoftDigital\SymfonyRestBundle\EventListener
  */
 class JWTCreatedListener

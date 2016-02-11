@@ -11,7 +11,7 @@ use Rss\UserApiBundle\Entity\User;
  * Entity Repository
  *
  * @author Lukas Hajdu <lukas@loftdigital.com>
- * @copyright Loft Digital <www.loftdigital.com>, 2016
+ * @copyright Loft Digital <http://weareloft.com>, 2016
  * @package LoftDigital\SymfonyRestBundle\Entity
  */
 class EntityRepository extends GenericEntityRepository

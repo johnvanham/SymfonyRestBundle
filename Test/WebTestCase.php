@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
  * All functional tests should extend this class
  *
  * @author Lukas Hajdu <lukas@loftdigital.com>
- * @copyright Loft Digital <www.loftdigital.com>, 2015
+ * @copyright Loft Digital <http://weareloft.com>, 2015
  * @package LoftDigital\SymfonyRestBundle\Test
  */
 abstract class WebTestCase extends FrameworkWebTestCase

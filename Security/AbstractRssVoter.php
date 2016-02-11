@@ -10,7 +10,7 @@ use Symfony\Component\Security\Core\Authorization\Voter\AbstractVoter;
  * Class AbstractRssVoter
  *
  * @author George Mylonas <georgem@loftdigital.com>
- * @copyright Loft Digital <www.loftdigital.com>, 2015
+ * @copyright Loft Digital <http://weareloft.com>, 2015
  * @package LoftDigital\SymfonyRestBundle\Security\AbstractRssVoter
  */
 abstract class AbstractRssVoter extends AbstractVoter

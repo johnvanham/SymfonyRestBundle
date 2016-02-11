@@ -8,7 +8,7 @@ use LoftDigital\SymfonyRestBundle\Model\HttpStatus;
  * Class HttpStatusTest
  *
  * @author Lukas Hajdu <lukas@loftdigital.com>
- * @copyright Loft Digital <www.loftdigital.com>, 2015
+ * @copyright Loft Digital <http://weareloft.com>, 2015
  * @package LoftDigital\SymfonyRestBundle\Tests\Model
  */
 class HttpStatusTest extends \PHPUnit_Framework_TestCase
