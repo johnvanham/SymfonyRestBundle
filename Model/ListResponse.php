@@ -1,6 +1,6 @@
 <?php
 
-namespace LoftDigital\RestBundle\Model;
+namespace LoftDigital\SymfonyRestBundle\Model;
 
 use Countable;
 use Doctrine\ORM\Tools\Pagination\Paginator;
@@ -11,8 +11,8 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  * Handles creating correct headers and response codes for a pagination
  *
  * @author Lukas Hajdu <lukas@loftdigital.com>
- * @copyright Loft Digital <www.loftdigital.com>, 2015
- * @package LoftDigital\RestBundle\Handler
+ * @copyright Loft Digital <http://weareloft.com>, 2015
+ * @package LoftDigital\SymfonyRestBundle\Handler
  */
 class ListResponse implements ResponseInterface
 {

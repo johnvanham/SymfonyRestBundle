@@ -1,15 +1,15 @@
 <?php
 
-namespace LoftDigital\RestBundle\Tests\Handler;
+namespace LoftDigital\SymfonyRestBundle\Tests\Handler;
 
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\EntityManagerInterface;
-use LoftDigital\RestBundle\Handler\AbstractItemHandler;
+use LoftDigital\SymfonyRestBundle\Handler\AbstractItemHandler;
 
 /**
  * Class AbstractItemHandlerTest
  *
- * @package LoftDigital\RestBundle\Tests\Handler
+ * @package LoftDigital\SymfonyRestBundle\Tests\Handler
  */
 class AbstractItemHandlerTest extends \PHPUnit_Framework_TestCase
 {
@@ -44,7 +44,7 @@ class AbstractItemHandlerTest extends \PHPUnit_Framework_TestCase
 
         /** @var AbstractItemHandler|\PHPUnit_Framework_MockObject_MockObject $itemHandler */
         $itemHandler = $this->getMockForAbstractClass(
-            '\LoftDigital\RestBundle\Handler\AbstractItemHandler',
+            '\LoftDigital\SymfonyRestBundle\Handler\AbstractItemHandler',
             array($entityManager, $this->entityClass)
         );
 
@@ -57,13 +57,13 @@ class AbstractItemHandlerTest extends \PHPUnit_Framework_TestCase
      * @covers \Rss\CustomerApiBundle\Handler\CustomerHandler::setRange
      * @covers \Rss\CustomerApiBundle\Handler\CustomerHandler::getRange
      *
-     * @expectedException \LoftDigital\RestBundle\Handler\UnsupportedRangeFormatException
+     * @expectedException \LoftDigital\SymfonyRestBundle\Handler\UnsupportedRangeFormatException
      */
     public function testSetRange()
     {
         /** @var AbstractItemHandler|\PHPUnit_Framework_MockObject_MockObject $itemHandler */
         $itemHandler = $this->getMockForAbstractClass(
-            '\LoftDigital\RestBundle\Handler\AbstractItemHandler',
+            '\LoftDigital\SymfonyRestBundle\Handler\AbstractItemHandler',
             array($this->entityManager, $this->entityClass)
         );
 
@@ -86,13 +86,13 @@ class AbstractItemHandlerTest extends \PHPUnit_Framework_TestCase
      * @covers \Rss\CustomerApiBundle\Handler\CustomerHandler::setOrder
      * @covers \Rss\CustomerApiBundle\Handler\CustomerHandler::getOrder
      *
-     * @expectedException \LoftDigital\RestBundle\Handler\UnsupportedOrderException
+     * @expectedException \LoftDigital\SymfonyRestBundle\Handler\UnsupportedOrderException
      */
     public function testSetOrder()
     {
         /** @var AbstractItemHandler|\PHPUnit_Framework_MockObject_MockObject $itemHandler */
         $itemHandler = $this->getMockForAbstractClass(
-            '\LoftDigital\RestBundle\Handler\AbstractItemHandler',
+            '\LoftDigital\SymfonyRestBundle\Handler\AbstractItemHandler',
             array($this->entityManager, $this->entityClass)
         );
 
@@ -108,13 +108,13 @@ class AbstractItemHandlerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \LoftDigital\RestBundle\Handler\AbstractItemHandler::getAcceptOrders
+     * @covers \LoftDigital\SymfonyRestBundle\Handler\AbstractItemHandler::getAcceptOrders
      */
     public function testGetAcceptOrders()
     {
         /** @var AbstractItemHandler|\PHPUnit_Framework_MockObject_MockObject $itemHandler */
         $itemHandler = $this->getMockForAbstractClass(
-            '\LoftDigital\RestBundle\Handler\AbstractItemHandler',
+            '\LoftDigital\SymfonyRestBundle\Handler\AbstractItemHandler',
             array($this->entityManager, $this->entityClass)
         );
 
@@ -122,13 +122,13 @@ class AbstractItemHandlerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers \LoftDigital\RestBundle\Handler\AbstractItemHandler::getDefaultOrder
+     * @covers \LoftDigital\SymfonyRestBundle\Handler\AbstractItemHandler::getDefaultOrder
      */
     public function testGetDefaultOrder()
     {
         /** @var AbstractItemHandler|\PHPUnit_Framework_MockObject_MockObject $itemHandler */
         $itemHandler = $this->getMockForAbstractClass(
-            '\LoftDigital\RestBundle\Handler\AbstractItemHandler',
+            '\LoftDigital\SymfonyRestBundle\Handler\AbstractItemHandler',
             array($this->entityManager, $this->entityClass)
         );
 

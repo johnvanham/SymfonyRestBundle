@@ -1,0 +1,12 @@
+# OS X
+.DS_Store
+._*
+
+# Windows
+.thumb
+
+# Phpstorm
+.idea
+
+# Composer
+vendor

@@ -1,15 +1,12 @@
 <?php
 
-namespace LoftDigital\RestBundle\EventListener;
+namespace LoftDigital\SymfonyRestBundle\EventListener;
 
 use Doctrine\ORM\Query\QueryException;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\View\ViewHandler;
-use LoftDigital\RestBundle\Model\HttpStatus;
+use LoftDigital\SymfonyRestBundle\Model\HttpStatus;
 use Psr\Log\LoggerInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -20,8 +17,8 @@ use Symfony\Component\Security\Core\Exception\CredentialsExpiredException;
  * Exception Listener
  *
  * @author Lukas Hajdu <lukas@loftdigital.com>
- * @copyright Loft Digital <www.loftdigital.com>, 2015
- * @package LoftDigital\RestBundle\EventListener
+ * @copyright Loft Digital <http://weareloft.com>, 2015
+ * @package LoftDigital\SymfonyRestBundle\EventListener
  */
 class ExceptionListener
 {

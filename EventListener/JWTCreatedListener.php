@@ -1,9 +1,9 @@
 <?php
 
-namespace LoftDigital\RestBundle\EventListener;
+namespace LoftDigital\SymfonyRestBundle\EventListener;
 
+use FOS\UserBundle\Model\User;
 use Lexik\Bundle\JWTAuthenticationBundle\Event\JWTCreatedEvent;
-use Rss\UserApiBundle\Entity\User;
 
 /**
  * JWT Created Listener
@@ -11,8 +11,8 @@ use Rss\UserApiBundle\Entity\User;
  * Lister appends data to JWT after a web token was created
  *
  * @author Lukas Hajdu <lukas@loftdigital.com>
- * @copyright Loft Digital <www.loftdigital.com>, 2016
- * @package LoftDigital\RestBundle\EventListener
+ * @copyright Loft Digital <http://weareloft.com>, 2016
+ * @package LoftDigital\SymfonyRestBundle\EventListener
  */
 class JWTCreatedListener
 {

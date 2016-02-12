@@ -1,6 +1,6 @@
 <?php
 
-namespace LoftDigital\RestBundle\EventListener;
+namespace LoftDigital\SymfonyRestBundle\EventListener;
 
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\Security\Core\Exception\CredentialsExpiredException;
@@ -15,7 +15,7 @@ use Symfony\Component\Security\Core\Exception\CredentialsExpiredException;
  *
  * @author Lukas Hajdu <lukas@loftdigital.com>
  * @copyright Loft Digital <http://weareloft.com>, 2016
- * @package LoftDigital\RestBundle\EventListener
+ * @package LoftDigital\SymfonyRestBundle\EventListener
  */
 class UnauthorisedListener
 {

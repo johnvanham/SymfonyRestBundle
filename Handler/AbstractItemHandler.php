@@ -1,19 +1,19 @@
 <?php
 
-namespace LoftDigital\RestBundle\Handler;
+namespace LoftDigital\SymfonyRestBundle\Handler;
 
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
-use LoftDigital\RestBundle\Entity\EntityRepository;
-use Rss\UserApiBundle\Entity\User;
+use FOS\UserBundle\Model\User;
+use LoftDigital\SymfonyRestBundle\Entity\EntityRepository;
 
 /**
  * Item handler abstract class
  *
  * @author Lukas Hajdu <lukas@loftdigital.com>
- * @copyright Loft Digital <www.loftdigital.com>, 2015
- * @package LoftDigital\RestBundle\Handler
+ * @copyright Loft Digital <http://weareloft.com>, 2015
+ * @package LoftDigital\SymfonyRestBundle\Handler
  */
 abstract class AbstractItemHandler
 {
