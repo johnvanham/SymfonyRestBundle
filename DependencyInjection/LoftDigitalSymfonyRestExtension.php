@@ -8,15 +8,15 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
 /**
- * Class RssCustomerApiExtension
+ * Loft Digital Symfony REST Extension
  *
  * This is the class that loads and manages your bundle configuration
  *
- * @package Rss\CustomerApiBundle\DependencyInjection
+ * @package LoftDigital\SymfonyRestBundle\DependencyInjection
  *
  * @link http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
-class LoftDigitalRestExtension extends Extension
+class LoftDigitalSymfonyRestExtension extends Extension
 {
     /**
      * {@inheritdoc}
@@ -29,14 +29,20 @@ class LoftDigitalRestExtension extends Extension
         $configuration = new Configuration();
         $processedConfig = $this->processConfiguration($configuration, $configs);
 
-        $container->setParameter('loft_digital_rest.range_listener.max', $processedConfig['range_listener']['max']);
-        $container->setParameter('loft_digital_rest.range_listener.order', $processedConfig['range_listener']['order']);
         $container->setParameter(
-            'loft_digital_rest.range_listener.max_limit',
+            'loft_digital_symfony_rest.range_listener.max',
+            $processedConfig['range_listener']['max']
+        );
+        $container->setParameter(
+            'loft_digital_symfony_rest.range_listener.order',
+            $processedConfig['range_listener']['order']
+        );
+        $container->setParameter(
+            'loft_digital_symfony_rest.range_listener.max_limit',
             $processedConfig['range_listener']['max_limit']
         );
         $container->setParameter(
-            'loft_digital_rest.range_listener.offset',
+            'loft_digital_symfony_rest.range_listener.offset',
             $processedConfig['range_listener']['offset']
         );
     }
@@ -46,6 +52,6 @@ class LoftDigitalRestExtension extends Extension
      */
     public function getAlias()
     {
-        return 'loft_digital_rest';
+        return 'loft_digital_symfony_rest';
     }
 }
