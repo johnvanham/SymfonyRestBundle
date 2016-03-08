@@ -4,7 +4,6 @@ namespace LoftDigital\SymfonyRestBundle\Entity;
 
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\EntityRepository as GenericEntityRepository;
-use Doctrine\ORM\Query\ResultSetMapping;
 use FOS\UserBundle\Model\User;
 
 /**
@@ -27,6 +26,9 @@ class EntityRepository extends GenericEntityRepository
 
     /** @var string */
     protected $order = Criteria::ASC;
+
+    const DEFAULT_MAX = 20;
+    const DEFAULT_OFFSET = 0;
 
     /**
      * Set user
