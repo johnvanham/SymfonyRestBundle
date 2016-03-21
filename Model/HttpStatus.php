@@ -24,6 +24,7 @@ class HttpStatus
             404 => 'not_found',
             403 => 'forbidden',
             409 => 'conflict',
+            405 => 'not_allowed',
         ];
     }
 
