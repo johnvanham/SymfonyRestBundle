@@ -20,10 +20,11 @@ class HttpStatus
     {
         return [
             400 => 'bad_request',
-            422 => 'invalid_params',
-            404 => 'not_found',
             403 => 'forbidden',
+            404 => 'not_found',
+            405 => 'not_allowed',
             409 => 'conflict',
+            422 => 'invalid_params',
         ];
     }
 
