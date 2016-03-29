@@ -38,7 +38,7 @@ class RestController extends FOSRestController
      */
     public function statusBadRequest($message = null)
     {
-        if ($message == null) {
+        if ($message === null) {
             $message = 'Request invalid, validate usage and try again.';
         }
 
@@ -66,7 +66,7 @@ class RestController extends FOSRestController
      */
     public function statusUnprocessableEntity($message = null)
     {
-        if ($message == null) {
+        if ($message === null) {
             $message = 'Request failed, validate parameters and try again.';
         }
 
@@ -85,13 +85,13 @@ class RestController extends FOSRestController
      *
      * @link http://www.restpatterns.org/HTTP_Status_Codes/404_-_Not_Found
      *
-     * @param null $message
+     * @param string|null $message
      *
      * @return View
      */
     public function statusNotFound($message = null)
     {
-        if ($message == null) {
+        if ($message === null) {
             $message = 'Request failed, the specified resource does not exist.';
         }
 
@@ -118,7 +118,7 @@ class RestController extends FOSRestController
      */
     public function statusConflict($message = null)
     {
-        if ($message == null) {
+        if ($message === null) {
             $message = 'Request failed, the resource already exist.';
         }
 
@@ -145,7 +145,7 @@ class RestController extends FOSRestController
      */
     public function statusForbidden($message = null)
     {
-        if ($message == null) {
+        if ($message === null) {
             $message = 'Request forbidden, no access to resource.';
         }
 
@@ -173,7 +173,7 @@ class RestController extends FOSRestController
      */
     public function statusMethodNotAllowed($message = null)
     {
-        if ($message == null) {
+        if ($message === null) {
             $message = 'Request not allowed.';
         }
 
