@@ -30,5 +30,8 @@ services:
       - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
   loft_digital_symfony_rest.unauthorised_listener:
     class: LoftDigital\SymfonyRestBundle\EventListener\UnauthorisedListener
+    arguments:
+      requestStack: "@request_stack"
+      userManager: "@fos_user.user_manager"
     tags:
       - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }

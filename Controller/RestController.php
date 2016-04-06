@@ -194,7 +194,7 @@ class RestController extends FOSRestController
      *
      * @link http://www.restpatterns.org/HTTP_Status_Codes/200_-_OK
      *
-     * @param array|object $object
+     * @param array|object|string $object
      *
      * @return View
      */
