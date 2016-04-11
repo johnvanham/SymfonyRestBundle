@@ -3,7 +3,7 @@
 namespace LoftDigital\SymfonyRestBundle\Handler;
 
 /**
- * Class UnsupportedOrderException
+ * Unsupported Order Exception
  *
  * @author Lukas Hajdu <lukas@loftdigital.com>
  * @copyright Loft Digital <http://weareloft.com>, 2015

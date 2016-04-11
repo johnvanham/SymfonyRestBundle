@@ -5,7 +5,7 @@ namespace LoftDigital\SymfonyRestBundle\Handler;
 use Exception;
 
 /**
- * Class UnsupportedReportTypeException
+ * Unsupported Report Type Exception
  *
  * @author Lukas Hajdu <lukas@loftdigital.com>
  * @copyright Loft Digital <http://weareloft.com>, 2016

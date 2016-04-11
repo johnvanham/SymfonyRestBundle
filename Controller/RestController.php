@@ -11,7 +11,7 @@ use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\ConstraintViolationList;
 
 /**
- * Class RestController
+ * REST Controller
  *
  * @author Lukas Hajdu <lukas@loftdigital.com>
  * @copyright Loft Digital <http://weareloft.com>, 2015
@@ -194,7 +194,7 @@ class RestController extends FOSRestController
      *
      * @link http://www.restpatterns.org/HTTP_Status_Codes/200_-_OK
      *
-     * @param array|object $object
+     * @param array|object|string $object
      *
      * @return View
      */
