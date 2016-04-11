@@ -10,7 +10,8 @@ use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 /**
  * Process controller output data
  *
- * Listener updates a format of the {@link ListResponse} object to a format acceptable by FOS rest {@link View} object.
+ * Listener updates a format of the {@link ListResponse} object to a format
+ * acceptable by FOS rest {@link View} object.
  *
  * @author Lukas Hajdu <lukas@loftdigital.com>
  * @copyright Loft Digital <http://weareloft.com>, 2015
@@ -27,7 +28,9 @@ class ViewResponseListener extends TemplateListener
      */
     public function onKernelView(GetResponseForControllerResultEvent $event)
     {
-        $event->setControllerResult($this->processResult($event->getControllerResult()));
+        $event->setControllerResult(
+            $this->processResult($event->getControllerResult())
+        );
     }
 
     /**

@@ -2,7 +2,12 @@
 
 namespace LoftDigital\SymfonyRestBundle\EventListener;
 
+use FOS\UserBundle\Model\UserManager;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\Security\Core\Exception\BadCredentialsException;
 use Symfony\Component\Security\Core\Exception\CredentialsExpiredException;
 
 /**
@@ -19,6 +24,26 @@ use Symfony\Component\Security\Core\Exception\CredentialsExpiredException;
  */
 class UnauthorisedListener
 {
+    /** @var Request */
+    protected $request;
+
+    /** @var UserManager */
+    protected $userManager;
+
+    /**
+     * Constructor
+     *
+     * @param RequestStack $requestStack
+     * @param UserManager $userManager
+     */
+    public function __construct(
+        RequestStack $requestStack,
+        UserManager $userManager
+    ) {
+        $this->request = $requestStack->getCurrentRequest();
+        $this->userManager = $userManager;
+    }
+
     /**
      * Kernel response listener
      *
@@ -27,8 +52,39 @@ class UnauthorisedListener
     public function onKernelResponse(FilterResponseEvent $event)
     {
         $response = $event->getResponse();
-        if ($response->getContent() === '' && $response->getStatusCode() === 401) {
-            throw new CredentialsExpiredException('Credentials have expired.');
+        if ($response->getStatusCode() === 401) {
+            if ($response->getContent() === '') {
+                throw new CredentialsExpiredException('Credentials have expired.');
+            }
+
+            $data = json_decode($response->getContent());
+            if (isset($data->message)) {
+                $this->processExceptionData($data->message);
+            }
+        }
+    }
+
+    /**
+     * Process exception data
+     *
+     * @param $message
+     */
+    public function processExceptionData($message)
+    {
+        if ($message == 'Bad credentials') {
+            $username = $this->request->get('_username');
+            if ($username !== null) {
+                $user = $this->userManager->findUserByUsername($username);
+                if ($user->getConfirmationToken() !== null
+                    && $user->isEnabled() === false
+                ) {
+                    throw new AccessDeniedException(
+                        'User account was not validated.'
+                    );
+                }
+            }
+
+            throw new BadCredentialsException('Invalid credentials.');
         }
     }
 }

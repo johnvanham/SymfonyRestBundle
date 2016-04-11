@@ -5,8 +5,10 @@ namespace LoftDigital\SymfonyRestBundle\Handler;
 use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use FOS\UserBundle\Model\User;
 use LoftDigital\SymfonyRestBundle\Entity\EntityRepository;
+use LoftDigital\SymfonyRestBundle\Model\ListResponse;
 
 /**
  * Item handler abstract class
@@ -35,7 +37,15 @@ abstract class AbstractItemHandler
     /** @var User */
     protected $user;
 
+    /** @var int */
+    protected $offset;
+
+    /** @var Paginator */
+    protected $paginator;
+
     /**
+     * Constructor
+     *
      * @param EntityManagerInterface $entityManager
      * @param string $entityClass
      */
@@ -63,6 +73,8 @@ abstract class AbstractItemHandler
     abstract public function getDefaultRange();
 
     /**
+     * Get entity manager
+     *
      * @return EntityManager
      */
     public function getEntityManager()
@@ -71,6 +83,8 @@ abstract class AbstractItemHandler
     }
 
     /**
+     * Get repository
+     *
      * @return EntityRepository
      */
     public function getRepository()
@@ -79,6 +93,8 @@ abstract class AbstractItemHandler
     }
 
     /**
+     * Get entity class
+     *
      * @return string
      */
     public function getEntityClass()
@@ -87,6 +103,8 @@ abstract class AbstractItemHandler
     }
 
     /**
+     * Get range
+     *
      * @return string
      */
     public function getRange()
@@ -95,6 +113,8 @@ abstract class AbstractItemHandler
     }
 
     /**
+     * Get order
+     *
      * @return string
      */
     public function getOrder()
@@ -108,7 +128,6 @@ abstract class AbstractItemHandler
      * @param string $range
      *
      * @return $this
-     * @throws UnsupportedRangeFormatException
      */
     public function setRange($range)
     {
@@ -124,7 +143,10 @@ abstract class AbstractItemHandler
             return $this;
         }
 
-        throw new UnsupportedRangeFormatException("Unsupported range format '$range'");
+        throw new UnsupportedRangeFormatException(sprintf(
+            'Unsupported range format "%s"',
+            $range
+        ));
     }
 
     /**
@@ -133,25 +155,27 @@ abstract class AbstractItemHandler
      * @param string $order
      *
      * @return $this
-     * @throws UnsupportedOrderException
      */
     public function setOrder($order)
     {
-        $order = strtoupper($order);
+        $formattedOrder = strtoupper($order);
 
-        if ($order == null) {
+        if ($formattedOrder == null) {
             $this->order = $this->getDefaultOrder();
 
             return $this;
         }
 
-        if (in_array($order, $this->getAcceptOrders())) {
-            $this->order = $order;
+        if (in_array($formattedOrder, $this->getAcceptOrders())) {
+            $this->order = $formattedOrder;
 
             return $this;
         }
 
-        throw new UnsupportedOrderException("Unsupported order type '$order'");
+        throw new UnsupportedOrderException(sprintf(
+            'Unsupported order type "%s"',
+            $order
+        ));
     }
 
     /**
@@ -190,5 +214,20 @@ abstract class AbstractItemHandler
         $this->repository->setUser($this->user);
 
         return $this;
+    }
+
+    /**
+     * Get list response
+     *
+     * @return ListResponse
+     */
+    public function getListResponse()
+    {
+        return new ListResponse(
+            $this->paginator,
+            $this->offset,
+            $this->range,
+            $this->getAcceptRanges()
+        );
     }
 }

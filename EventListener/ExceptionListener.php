@@ -63,7 +63,11 @@ class ExceptionListener
         }
 
         if ($exception instanceof AccessDeniedException) {
-            $message = 'Request not authorized, provided credentials do not provide access to specified resource.';
+            if ($message === (new AccessDeniedException())->getMessage()) {
+                $message = 'Request not authorized, provided credentials do '
+                    . 'not provide access to specified resource.';
+            }
+
             $code = $exception->getCode();
         }
 
