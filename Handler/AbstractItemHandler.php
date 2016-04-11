@@ -44,6 +44,8 @@ abstract class AbstractItemHandler
     protected $paginator;
 
     /**
+     * Constructor
+     *
      * @param EntityManagerInterface $entityManager
      * @param string $entityClass
      */
@@ -71,6 +73,8 @@ abstract class AbstractItemHandler
     abstract public function getDefaultRange();
 
     /**
+     * Get entity manager
+     *
      * @return EntityManager
      */
     public function getEntityManager()
@@ -79,6 +83,8 @@ abstract class AbstractItemHandler
     }
 
     /**
+     * Get repository
+     *
      * @return EntityRepository
      */
     public function getRepository()
@@ -87,6 +93,8 @@ abstract class AbstractItemHandler
     }
 
     /**
+     * Get entity class
+     *
      * @return string
      */
     public function getEntityClass()
@@ -95,6 +103,8 @@ abstract class AbstractItemHandler
     }
 
     /**
+     * Get range
+     *
      * @return string
      */
     public function getRange()
@@ -103,6 +113,8 @@ abstract class AbstractItemHandler
     }
 
     /**
+     * Get order
+     *
      * @return string
      */
     public function getOrder()
@@ -116,7 +128,6 @@ abstract class AbstractItemHandler
      * @param string $range
      *
      * @return $this
-     * @throws UnsupportedRangeFormatException
      */
     public function setRange($range)
     {
@@ -144,7 +155,6 @@ abstract class AbstractItemHandler
      * @param string $order
      *
      * @return $this
-     * @throws UnsupportedOrderException
      */
     public function setOrder($order)
     {

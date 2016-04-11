@@ -5,7 +5,7 @@ namespace LoftDigital\SymfonyRestBundle\RPC;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * Class AbstractRPC
+ * Abstract RPC
  *
  * @author Tomas Lang <tomas@loftdigital.com>
  * @copyright Loft Digital <http://weareloft.com>, 2015

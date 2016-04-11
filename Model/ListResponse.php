@@ -83,13 +83,19 @@ class ListResponse implements ResponseInterface
     }
 
     /**
+     * Constructor
+     *
      * @param Paginator|Countable $paginator
      * @param int $offset
      * @param string $range
      * @param array $acceptRanges
      */
-    public function __construct(Countable $paginator, $offset, $range, array $acceptRanges)
-    {
+    public function __construct(
+        Countable $paginator,
+        $offset,
+        $range,
+        array $acceptRanges
+    ) {
         $this->totalItemCount = count($paginator);
         $this->iterator = $paginator->getIterator();
         $this->pageItemCount = $this->iterator->count();
