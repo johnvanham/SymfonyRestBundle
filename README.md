@@ -1,24 +1,24 @@
 # Symfony REST Bundle
 
-General methods to help with REST-ful approach in a Symfony 3 application.
+General methods to help with a REST-ful approach in a Symfony 3 application.
 
 Bundle features:
 
-* handling API errors
-* better handling of exceptions
+* API error handling
+* Improved exception handling
 * pagination and ordering functionality
-* management CORS headers
+* CORS headers management
 
 ## API error handling
 
 * inspired by the [Heroku API error responses](https://devcenter.heroku.com/articles/platform-api-reference#errors)
 * additional response data handling on top of [FOSRestBundle](https://github.com/FriendsOfSymfony/FOSRestBundle)
 * better management of unauthorised user errors
-* error data is returned in a format:
+* error data is returned in the following format:
     ```
     {
         'id': 'status_code_id',
-        'message': 'error message',
+        'message': 'error message'
     }
     ```
 
@@ -55,9 +55,9 @@ class UserController extends RestController
 
 ## Pagination
 
-* inspired by the [Range header, I choose you!](http://otac0n.com/blog/2012/11/21/range-header-i-choose-you.html)
-* injects `order`, `max`, `offset`, `range` to a `Request` object based on a request data
-* use `ListResponse` response format to automatically inject response headers
+* inspired by [Range header, I choose you!](http://otac0n.com/blog/2012/11/21/range-header-i-choose-you.html)
+* injects `order`, `max`, `offset`, `range` to a `Request` object based on request data
+* use the `ListResponse` response format to automatically inject response headers
     * `Accept-Ranges`
     * `Content-Range`
     * `Next-Range`
