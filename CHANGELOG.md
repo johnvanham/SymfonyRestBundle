@@ -2,7 +2,7 @@
 
 ## v2.0.1
 
-**February 11, 2016**
+**April 12, 2016**
 
 ### Changes
 
@@ -11,7 +11,7 @@
 
 ## v2.0.0
 
-**February 11, 2016**
+**April 11, 2016**
 
 ### Changes
 
