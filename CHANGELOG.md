@@ -1,5 +1,14 @@
 # Symfony REST Bundle
 
+## v2.0.2
+
+**May 11, 2016**
+
+### Changes
+
+* Update condition for invalid username
+* Add Unsupported Media Type status
+
 ## v2.0.1
 
 **April 12, 2016**
