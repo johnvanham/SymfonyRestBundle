@@ -25,7 +25,7 @@ class ExceptionListener
     /** @var ViewHandler */
     protected $controller;
 
-    /** @var null|LoggerInterface  */
+    /** @var LoggerInterface|null */
     protected $logger;
 
     /**
@@ -44,8 +44,6 @@ class ExceptionListener
      * Handle kernel exception
      *
      * @param GetResponseForExceptionEvent $event
-     *
-     * @throws \Exception
      */
     public function onKernelException(GetResponseForExceptionEvent $event)
     {
@@ -81,7 +79,10 @@ class ExceptionListener
 
         $event->setResponse(
             $this->controller->handle(
-                new View(['id' => (new HttpStatus())->getIdForStatusCode($code), 'message' => $message], $code),
+                new View([
+                    'id' => (new HttpStatus())->getIdForStatusCode($code),
+                    'message' => $message
+                ], $code),
                 $event->getRequest()
             )
         );
