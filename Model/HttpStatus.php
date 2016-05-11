@@ -24,6 +24,7 @@ class HttpStatus
             404 => 'not_found',
             405 => 'not_allowed',
             409 => 'conflict',
+            415 => 'unsupported',
             422 => 'invalid_params',
         ];
     }
