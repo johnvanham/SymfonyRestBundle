@@ -187,6 +187,34 @@ class RestController extends FOSRestController
     }
 
     /**
+     * 415 - Unsupported Media Type
+     *
+     * The server is refusing to service the request because the entity of
+     * the request is in a format not supported by the requested resource for
+     * the requested method.
+     *
+     * @link http://www.restpatterns.org/HTTP_Status_Codes/415_-_Unsupported_Media_Type
+     *
+     * @param null $message
+     *
+     * @return View
+     */
+    public function statusUnsupportedMediaType($message = null)
+    {
+        if ($message === null) {
+            $message = 'Unsupported Media Type.';
+        }
+
+        return $this->view(
+            [
+                'id' => (new HttpStatus())->getIdForStatusCode(415),
+                'message' => $message
+            ],
+            415
+        );
+    }
+
+    /**
      * 200 - OK
      *
      * The request has succeeded. The information returned with the response

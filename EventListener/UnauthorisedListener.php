@@ -75,7 +75,8 @@ class UnauthorisedListener
             $username = $this->request->get('_username');
             if ($username !== null) {
                 $user = $this->userManager->findUserByUsername($username);
-                if ($user->getConfirmationToken() !== null
+                if ($user !== null
+                    && $user->getConfirmationToken() !== null
                     && $user->isEnabled() === false
                 ) {
                     throw new AccessDeniedException(
